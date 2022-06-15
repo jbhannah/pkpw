@@ -16,6 +16,9 @@ pkpw
 
 ## But is it secure?
 
+**Disclaimer:** These are just estimates, I have a physics degree but I'm not
+a combinatorics or cryptography expert.
+
 [Password entropy][] is calculated using the pool size $R$ and password length
 $L$ used to generate a password:
 
