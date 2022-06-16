@@ -12,9 +12,9 @@ cargo install pkpw
 
 ## Usage
 
-```sh
+```txt
 $ pkpw -h
-pkpw 0.2.0
+pkpw 0.3.0
 Jesse Brooklyn Hannah <jesse@jbhannah.net>
 What if correct horse battery staple, but Pokémon.
 
@@ -22,9 +22,10 @@ USAGE:
     pkpw [OPTIONS]
 
 OPTIONS:
-    -h, --help        Print help information
-    -n <COUNT>        Number of Pokémon names to use in the generated password [default: 4]
-    -V, --version     Print version information
+    -h, --help               Print help information
+    -l, --length <LENGTH>    Minimum length of the generated password
+    -n <COUNT>               Number of Pokémon names to use in the generated password [default: 4]
+    -V, --version            Print version information
 ```
 
 ## But is it secure?

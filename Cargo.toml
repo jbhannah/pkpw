@@ -1,6 +1,6 @@
 [package]
 name = "pkpw"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Jesse Brooklyn Hannah <jesse@jbhannah.net>"]
 edition = "2021"
 license = "MIT"
