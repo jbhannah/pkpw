@@ -1,5 +1,7 @@
 # pkpw
 
+[![.github/workflows/cargo.yml](https://github.com/jbhannah/pkpw/actions/workflows/cargo.yml/badge.svg)](https://github.com/jbhannah/pkpw/actions/workflows/cargo.yml)
+
 What if [`correct horse battery staple`][xkcd], but Pokémon.
 
 ## Installation
