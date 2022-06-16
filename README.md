@@ -14,7 +14,7 @@ cargo install pkpw
 
 ```txt
 $ pkpw -h
-pkpw 0.4.0
+pkpw 0.4.1
 Jesse Brooklyn Hannah <jesse@jbhannah.net>
 What if correct horse battery staple, but Pokémon.
 

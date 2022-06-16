@@ -53,7 +53,11 @@ fn main() {
             .set_text(password)
             .expect("could not set OS clipboard");
     } else {
-        println!("{}", password);
+        print!("{}", password);
+
+        if atty::is(atty::Stream::Stdout) {
+            println!();
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 [package]
 name = "pkpw"
-version = "0.4.0"
+version = "0.4.1"
 authors = ["Jesse Brooklyn Hannah <jesse@jbhannah.net>"]
 edition = "2021"
 license = "MIT"
@@ -13,6 +13,7 @@ homepage = "https://github.com/jbhannah/pkpw"
 [dependencies]
 arboard = "2.1.1"
 assert_cmd = "2.0.4"
+atty = "0.2.14"
 clap = { version = "3.2.5", features = ["derive"] }
 lazy_static = "1.4.0"
 rand = "0.8.5"
