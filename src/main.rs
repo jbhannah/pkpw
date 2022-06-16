@@ -1,5 +1,6 @@
 use std::vec::IntoIter;
 
+use arboard::Clipboard;
 use clap::Parser;
 use lazy_static::lazy_static;
 use rand::{prelude::SliceRandom, thread_rng, Rng};
@@ -13,6 +14,10 @@ lazy_static! {
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
 struct Args {
+    /// Copy the generated value to the clipboard instead of displaying it.
+    #[clap(short = 'c', long = "copy")]
+    copy: bool,
+
     /// Number of Pokémon names to use in the generated password.
     #[clap(
         short = 'n',
@@ -27,7 +32,8 @@ struct Args {
     length: Option<usize>,
 }
 
-/// Print a password of four random Pokémon names joined by a space character.
+/// Generate a password of four random Pokémon names joined by a space
+/// character.
 fn main() {
     let args = Args::parse();
 
@@ -40,7 +46,15 @@ fn main() {
     };
 
     let password = picked.join(" ");
-    println!("{}", password);
+
+    if args.copy {
+        Clipboard::new()
+            .expect("could not access OS clipboard")
+            .set_text(password)
+            .expect("could not set OS clipboard");
+    } else {
+        println!("{}", password);
+    }
 }
 
 /// Shuffle the list of Pokémon using the given RNG and return them as an

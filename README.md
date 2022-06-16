@@ -14,7 +14,7 @@ cargo install pkpw
 
 ```txt
 $ pkpw -h
-pkpw 0.3.0
+pkpw 0.4.0
 Jesse Brooklyn Hannah <jesse@jbhannah.net>
 What if correct horse battery staple, but Pokémon.
 
@@ -22,6 +22,7 @@ USAGE:
     pkpw [OPTIONS]
 
 OPTIONS:
+    -c, --copy               Copy the generated value to the clipboard instead of displaying it
     -h, --help               Print help information
     -l, --length <LENGTH>    Minimum length of the generated password
     -n <COUNT>               Number of Pokémon names to use in the generated password [default: 4]
