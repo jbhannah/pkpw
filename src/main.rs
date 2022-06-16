@@ -93,6 +93,19 @@ mod test {
 
     use super::*;
 
+    #[test]
+    fn test_command() {
+        let mut cmd = assert_cmd::Command::cargo_bin(env!("CARGO_PKG_NAME")).unwrap();
+        cmd.assert().success();
+    }
+
+    #[test]
+    fn test_command_length_excl_pick() {
+        let mut cmd = assert_cmd::Command::cargo_bin(env!("CARGO_PKG_NAME")).unwrap();
+        cmd.arg("-l 40").arg("-n 4");
+        cmd.assert().failure();
+    }
+
     /// Ensure that length(…, 40) returns a vector of five strings which create
     /// a password with a length greater than 40.
     #[test]

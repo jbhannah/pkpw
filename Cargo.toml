@@ -12,6 +12,7 @@ homepage = "https://github.com/jbhannah/pkpw"
 
 [dependencies]
 arboard = "2.1.1"
+assert_cmd = "2.0.4"
 clap = { version = "3.2.5", features = ["derive"] }
 lazy_static = "1.4.0"
 rand = "0.8.5"
