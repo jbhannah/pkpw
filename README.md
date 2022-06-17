@@ -27,7 +27,7 @@ OPTIONS:
                                    it
     -h, --help                     Print help information
     -l, --length <LENGTH>          Minimum length of the generated password
-    -n <COUNT>                     Number of Pokémon names to use in the generated password
+    -n, --count <COUNT>            Number of Pokémon names to use in the generated password
                                    [default: 4]
     -s, --separator <SEPARATOR>    Separator between Pokémon names in the generated password; either
                                    a single character, "digit" for random digits, or "special" for

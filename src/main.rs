@@ -27,6 +27,7 @@ struct Args {
     /// Number of Pokémon names to use in the generated password.
     #[clap(
         short = 'n',
+        long = "count",
         value_parser,
         default_value_t = 4,
         conflicts_with = "length"
