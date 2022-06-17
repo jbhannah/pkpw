@@ -15,6 +15,8 @@ lazy_static! {
         include_str!("../pokemon.txt").trim().split("\n").collect();
 }
 
+/// Generate a password matching the given parameters of character length, word
+/// count, and word separator.
 pub fn generate<R: Rng + Clone + ?Sized>(
     len: Option<usize>,
     count: usize,
