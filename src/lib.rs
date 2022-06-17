@@ -1,9 +1,7 @@
 use std::vec::IntoIter;
 
-use arboard::Clipboard;
-use clap::Parser;
 use lazy_static::lazy_static;
-use rand::{prelude::SliceRandom, thread_rng, Rng};
+use rand::{prelude::SliceRandom, Rng};
 
 const DIGITS: &'static [&'static str] = &["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const SPECIAL: &'static [&'static str] = &[
@@ -17,83 +15,44 @@ lazy_static! {
         include_str!("../pokemon.txt").trim().split("\n").collect();
 }
 
-#[derive(Parser, Debug)]
-#[clap(author, version, about, long_about = None)]
-struct Args {
-    /// Copy the generated value to the clipboard instead of displaying it.
-    #[clap(short = 'c', long = "copy")]
-    copy: bool,
-
-    /// Number of Pokémon names to use in the generated password.
-    #[clap(
-        short = 'n',
-        long = "count",
-        value_parser,
-        default_value_t = 4,
-        conflicts_with = "length"
-    )]
+pub fn generate<R: Rng + Clone + ?Sized>(
+    len: Option<usize>,
     count: usize,
-
-    /// Minimum length of the generated password.
-    #[clap(short = 'l', long = "length", value_parser, required = false)]
-    length: Option<usize>,
-
-    /// Separator between Pokémon names in the generated password; either a
-    /// single character, "digit" for random digits, or "special" for random
-    /// special characters.
-    #[clap(short = 's', long = "separator", value_parser, default_value = " ")]
     separator: String,
-}
+    rng: &mut R,
+) -> String {
+    let mut rng_local = rng.clone();
+    let mut pokemon = shuffle(&mut rng_local);
 
-/// Generate a password of four random Pokémon names joined by a separator.
-fn main() {
-    let args = Args::parse();
-
-    let mut rng = thread_rng();
-    let mut pokemon = shuffle(&mut rng);
-
-    let picked = match args.length {
+    let picked = match len {
         Some(len) => length(&mut pokemon, len),
-        None => pick(&mut pokemon, args.count),
+        None => pick(&mut pokemon, count),
     };
 
-    let mut rng = thread_rng();
-    let password = match args.separator.as_str() {
-        "digit" => join(picked, DIGITS, &mut rng),
-        "special" => join(picked, SPECIAL, &mut rng),
+    let mut rng_local = rng.clone();
+    match separator.as_str() {
+        "digit" => join(picked, DIGITS, &mut rng_local),
+        "special" => join(picked, SPECIAL, &mut rng_local),
         sep => picked.join(sep),
-    };
-
-    if args.copy {
-        Clipboard::new()
-            .expect("could not access OS clipboard")
-            .set_text(password)
-            .expect("could not set OS clipboard");
-    } else {
-        print!("{}", password);
-
-        if atty::is(atty::Stream::Stdout) {
-            println!();
-        }
     }
 }
 
 /// Shuffle the list of Pokémon using the given RNG and return them as an
 /// iterator.
-fn shuffle<R: Rng + ?Sized>(rng: &mut R) -> IntoIter<&str> {
+pub fn shuffle<R: Rng + ?Sized>(rng: &mut R) -> IntoIter<&str> {
     let mut pokemon = POKEMON.clone();
     pokemon.shuffle(rng);
     pokemon.into_iter()
 }
 
 /// Pick a number of random Pokémon names from the given iterator.
-fn pick<'a>(pokemon: &mut IntoIter<&'a str>, count: usize) -> Vec<&'a str> {
+pub fn pick<'a>(pokemon: &mut IntoIter<&'a str>, count: usize) -> Vec<&'a str> {
     pokemon.take(count).collect()
 }
 
 /// Take Pokémon names from the given iterator until the resulting password
 /// would meet the required minimum length.
-fn length<'a>(pokemon: &mut IntoIter<&'a str>, length: usize) -> Vec<&'a str> {
+pub fn length<'a>(pokemon: &mut IntoIter<&'a str>, length: usize) -> Vec<&'a str> {
     let mut picked: Vec<&str> = vec![];
 
     while picked.join(" ").len() < length {
@@ -105,7 +64,7 @@ fn length<'a>(pokemon: &mut IntoIter<&'a str>, length: usize) -> Vec<&'a str> {
 
 /// Join the collection of items with random selections from the set of possible
 /// separators.
-fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[&str], rng: &mut R) -> String {
+pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[&str], rng: &mut R) -> String {
     picked
         .into_iter()
         .map(|name| name.to_owned())
@@ -122,19 +81,63 @@ mod test {
 
     use super::*;
 
-    /// Ensure that the command runs successfully.
+    /// Ensure that generate() generates a password string.
     #[test]
-    fn test_command() {
-        let mut cmd = assert_cmd::Command::cargo_bin(env!("CARGO_PKG_NAME")).unwrap();
-        cmd.assert().success();
+    fn test_generate() {
+        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+
+        assert_eq!(
+            "Shroomish Venusaur Froakie Tyranitar".to_string(),
+            generate(None, 4, " ".to_string(), &mut rng)
+        );
     }
 
-    /// Ensure that the count and length arguments are mutually exclusive.
+    /// Ensure that generate(Some(length), …) generates a password of a minimum
+    /// length.
     #[test]
-    fn test_command_length_excl_pick() {
-        let mut cmd = assert_cmd::Command::cargo_bin(env!("CARGO_PKG_NAME")).unwrap();
-        cmd.arg("-l 40").arg("-n 4");
-        cmd.assert().failure();
+    fn test_generate_length() {
+        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+
+        assert_eq!(
+            "Shroomish Venusaur Froakie Tyranitar Wingull".to_string(),
+            generate(Some(40), 4, " ".to_string(), &mut rng)
+        );
+    }
+
+    /// Ensure that generate(…, "-", …) generates a password with "-" as a
+    /// separator between words.
+    #[test]
+    fn test_generate_separator() {
+        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+
+        assert_eq!(
+            "Shroomish-Venusaur-Froakie-Tyranitar".to_string(),
+            generate(None, 4, "-".to_string(), &mut rng)
+        );
+    }
+
+    /// Ensure that generate(…, "digit", …) generates a password with random
+    /// digit separators.
+    #[test]
+    fn test_generate_digit() {
+        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+
+        assert_eq!(
+            "Shroomish7Venusaur0Froakie2Tyranitar".to_string(),
+            generate(None, 4, "digit".to_string(), &mut rng)
+        );
+    }
+
+    /// Ensure that generate(…, "special", …) generates a password with random
+    /// special character separators.
+    #[test]
+    fn test_generate_special() {
+        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+
+        assert_eq!(
+            "Shroomish#Venusaur`Froakie/Tyranitar".to_string(),
+            generate(None, 4, "special".to_string(), &mut rng)
+        );
     }
 
     /// Ensure that join() joins the vector of strings with random elements from
