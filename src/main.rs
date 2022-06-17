@@ -96,12 +96,7 @@ fn pick<'a>(pokemon: &mut IntoIter<&'a str>, count: usize) -> Vec<&'a str> {
 fn length<'a>(pokemon: &mut IntoIter<&'a str>, length: usize) -> Vec<&'a str> {
     let mut picked: Vec<&str> = vec![];
 
-    while picked
-        .clone()
-        .into_iter()
-        .fold(0, |len, name| len + name.len() + 1)
-        < length + 1
-    {
+    while picked.join(" ").len() < length {
         picked.push(pokemon.next().expect("no unique names left"));
     }
 
