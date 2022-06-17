@@ -15,7 +15,7 @@ cargo install pkpw
 
 ```txt
 $ pkpw -h
-pkpw 0.4.1
+pkpw 0.5.0
 Jesse Brooklyn Hannah <jesse@jbhannah.net>
 What if correct horse battery staple, but Pokémon.
 
@@ -23,11 +23,16 @@ USAGE:
     pkpw [OPTIONS]
 
 OPTIONS:
-    -c, --copy               Copy the generated value to the clipboard instead of displaying it
-    -h, --help               Print help information
-    -l, --length <LENGTH>    Minimum length of the generated password
-    -n <COUNT>               Number of Pokémon names to use in the generated password [default: 4]
-    -V, --version            Print version information
+    -c, --copy                     Copy the generated value to the clipboard instead of displaying
+                                   it
+    -h, --help                     Print help information
+    -l, --length <LENGTH>          Minimum length of the generated password
+    -n <COUNT>                     Number of Pokémon names to use in the generated password
+                                   [default: 4]
+    -s, --separator <SEPARATOR>    Separator between Pokémon names in the generated password; either
+                                   a single character, "digit" for random digits, or "special" for
+                                   random special characters [default: " "]
+    -V, --version                  Print version information
 ```
 
 ## But is it secure?
