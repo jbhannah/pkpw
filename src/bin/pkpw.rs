@@ -60,17 +60,22 @@ fn main() {
 
 #[cfg(test)]
 mod test {
+    use assert_cmd::Command;
+
+    fn cmd() -> Command {
+        assert_cmd::Command::cargo_bin(env!("CARGO_PKG_NAME")).unwrap()
+    }
+
     /// Ensure that the command runs successfully.
     #[test]
     fn test_command() {
-        let mut cmd = assert_cmd::Command::cargo_bin(env!("CARGO_PKG_NAME")).unwrap();
-        cmd.assert().success();
+        cmd().assert().success();
     }
 
     /// Ensure that the count and length arguments are mutually exclusive.
     #[test]
     fn test_command_length_excl_pick() {
-        let mut cmd = assert_cmd::Command::cargo_bin(env!("CARGO_PKG_NAME")).unwrap();
+        let mut cmd = cmd();
         cmd.arg("-l 40").arg("-n 4");
         cmd.assert().failure();
     }

@@ -79,14 +79,19 @@ pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[&str], rng: &mut R
 
 #[cfg(test)]
 mod test {
+    use rand::rngs::StdRng;
     use rand::SeedableRng;
 
     use super::*;
 
+    fn rng_from_seed(state: u64) -> StdRng {
+        StdRng::seed_from_u64(state)
+    }
+
     /// Ensure that generate() generates a password string.
     #[test]
     fn test_generate() {
-        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+        let mut rng = rng_from_seed(913);
 
         assert_eq!(
             "Shroomish Venusaur Froakie Tyranitar".to_string(),
@@ -98,7 +103,7 @@ mod test {
     /// length.
     #[test]
     fn test_generate_length() {
-        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+        let mut rng = rng_from_seed(913);
 
         assert_eq!(
             "Shroomish Venusaur Froakie Tyranitar Wingull".to_string(),
@@ -110,7 +115,7 @@ mod test {
     /// separator between words.
     #[test]
     fn test_generate_separator() {
-        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+        let mut rng = rng_from_seed(913);
 
         assert_eq!(
             "Shroomish-Venusaur-Froakie-Tyranitar".to_string(),
@@ -122,7 +127,7 @@ mod test {
     /// digit separators.
     #[test]
     fn test_generate_digit() {
-        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+        let mut rng = rng_from_seed(913);
 
         assert_eq!(
             "Shroomish7Venusaur0Froakie2Tyranitar".to_string(),
@@ -134,7 +139,7 @@ mod test {
     /// special character separators.
     #[test]
     fn test_generate_special() {
-        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+        let mut rng = rng_from_seed(913);
 
         assert_eq!(
             "Shroomish#Venusaur`Froakie/Tyranitar".to_string(),
@@ -146,7 +151,7 @@ mod test {
     /// the slice of separators.
     #[test]
     fn test_join() {
-        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+        let mut rng = rng_from_seed(913);
         let mut rng_1 = rng.clone();
 
         let mut pokemon = shuffle(&mut rng);
@@ -162,7 +167,7 @@ mod test {
     /// a password with a length greater than 40.
     #[test]
     fn test_length() {
-        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+        let mut rng = rng_from_seed(913);
         let mut pokemon = shuffle(&mut rng);
 
         assert_eq!(
@@ -174,7 +179,7 @@ mod test {
     /// Ensure that pick(…, 4) returns a vector of four strings.
     #[test]
     fn test_pick() {
-        let mut rng = rand::rngs::StdRng::seed_from_u64(913);
+        let mut rng = rng_from_seed(913);
         let mut pokemon = shuffle(&mut rng);
 
         assert_eq!(
@@ -186,10 +191,10 @@ mod test {
     /// Ensure that pick() returns different results for different RNGs.
     #[test]
     fn test_pick_rand() {
-        let mut rng_1 = rand::rngs::StdRng::seed_from_u64(913);
+        let mut rng_1 = rng_from_seed(913);
         let mut pokemon_1 = shuffle(&mut rng_1);
 
-        let mut rng_2 = rand::rngs::StdRng::seed_from_u64(319);
+        let mut rng_2 = rng_from_seed(319);
         let mut pokemon_2 = shuffle(&mut rng_2);
 
         assert_ne!(pick(&mut pokemon_1, 4), pick(&mut pokemon_2, 4));
