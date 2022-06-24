@@ -1,3 +1,5 @@
+#![doc = include_str!("../README.md")]
+
 use std::vec::IntoIter;
 
 use lazy_static::lazy_static;
@@ -10,7 +12,8 @@ const SPECIAL: &'static [&'static str] = &[
 ];
 
 lazy_static! {
-    /// All Pokémon names.
+    /// Vector of all Pokémon names, in English and ASCII-normalized (e.g.
+    /// Nidoran♀ -> Nidoran-F, Flabébé -> Flabebe) for easier keyboard entry.
     pub static ref POKEMON: Vec<&'static str> =
         include_str!("../pokemon.txt").trim().split("\n").collect();
 }

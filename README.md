@@ -13,7 +13,9 @@ cargo install pkpw
 
 ## Usage
 
-```txt
+### CLI
+
+```console
 $ pkpw -h
 pkpw 1.0.1
 Jesse Brooklyn Hannah <jesse@jbhannah.net>
@@ -33,6 +35,16 @@ OPTIONS:
                                    a single character, "digit" for random digits, or "special" for
                                    random special characters [default: " "]
     -V, --version                  Print version information
+```
+
+### Library
+
+```rust
+use pkpw::generate;
+use rand::thread_rng;
+
+let mut rng = thread_rng();
+let password = generate(None, 4, " ".to_string(), &mut rng);
 ```
 
 ## But is it secure?
@@ -80,8 +92,9 @@ bits of entropy, taking an average of $9.201 \times 10^{64}$ guesses, or
 
 All Pokémon names are ™ and © The Pokémon Company, Inc. Everything else in
 this project is © Jesse Brooklyn Hannah and released under the terms of the
-[MIT License](LICENSE).
+[MIT License][].
 
 [xkcd]: https://xkcd.com/936/
 [password entropy]: https://www.omnicalculator.com/other/password-entropy
-[names]: pokemon.txt
+[names]: https://github.com/jbhannah/pkpw/blob/trunk/pokemon.txt
+[mit license]: https://github.com/jbhannah/pkpw/blob/trunk/LICENSE
