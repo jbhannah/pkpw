@@ -44,7 +44,7 @@ use pkpw::generate;
 use rand::thread_rng;
 
 let mut rng = thread_rng();
-let password = generate(None, 4, " ".to_string(), &mut rng);
+let password = generate(None, 4, " ", &mut rng);
 ```
 
 ## But is it secure?

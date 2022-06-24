@@ -23,7 +23,7 @@ lazy_static! {
 pub fn generate<R: Rng + Clone + ?Sized>(
     len: Option<usize>,
     count: usize,
-    separator: String,
+    separator: &str,
     rng: &mut R,
 ) -> String {
     let mut rng_local = rng.clone();
@@ -35,7 +35,7 @@ pub fn generate<R: Rng + Clone + ?Sized>(
     };
 
     let mut rng_local = rng.clone();
-    match separator.as_str() {
+    match separator {
         "digit" => join(picked, DIGITS, &mut rng_local),
         "special" => join(picked, SPECIAL, &mut rng_local),
         sep => picked.join(sep),
@@ -98,7 +98,7 @@ mod test {
 
         assert_eq!(
             "Shroomish Venusaur Froakie Tyranitar".to_string(),
-            generate(None, 4, " ".to_string(), &mut rng)
+            generate(None, 4, " ", &mut rng)
         );
     }
 
@@ -110,7 +110,7 @@ mod test {
 
         assert_eq!(
             "Shroomish Venusaur Froakie Tyranitar Wingull".to_string(),
-            generate(Some(40), 4, " ".to_string(), &mut rng)
+            generate(Some(40), 4, " ", &mut rng)
         );
     }
 
@@ -122,7 +122,7 @@ mod test {
 
         assert_eq!(
             "Shroomish-Venusaur-Froakie-Tyranitar".to_string(),
-            generate(None, 4, "-".to_string(), &mut rng)
+            generate(None, 4, "-", &mut rng)
         );
     }
 
@@ -134,7 +134,7 @@ mod test {
 
         assert_eq!(
             "Shroomish7Venusaur0Froakie2Tyranitar".to_string(),
-            generate(None, 4, "digit".to_string(), &mut rng)
+            generate(None, 4, "digit", &mut rng)
         );
     }
 
@@ -146,7 +146,7 @@ mod test {
 
         assert_eq!(
             "Shroomish#Venusaur`Froakie/Tyranitar".to_string(),
-            generate(None, 4, "special".to_string(), &mut rng)
+            generate(None, 4, "special", &mut rng)
         );
     }
 

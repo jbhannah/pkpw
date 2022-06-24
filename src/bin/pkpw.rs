@@ -35,7 +35,7 @@ struct Args {
 fn main() {
     let args = Args::parse();
     let mut rng = thread_rng();
-    let password = generate(args.length, args.count, args.separator, &mut rng);
+    let password = generate(args.length, args.count, &args.separator, &mut rng);
 
     if args.copy {
         Clipboard::new()
