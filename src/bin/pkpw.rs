@@ -1,14 +1,7 @@
 use arboard::Clipboard;
 use clap::Parser;
-use lazy_static::lazy_static;
 use pkpw::generate;
 use rand::thread_rng;
-
-lazy_static! {
-    /// All Pokémon names.
-    static ref POKEMON: Vec<&'static str> =
-        include_str!("../../pokemon.txt").trim().split("\n").collect();
-}
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]

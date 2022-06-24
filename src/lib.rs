@@ -11,7 +11,7 @@ const SPECIAL: &'static [&'static str] = &[
 
 lazy_static! {
     /// All Pokémon names.
-    static ref POKEMON: Vec<&'static str> =
+    pub static ref POKEMON: Vec<&'static str> =
         include_str!("../pokemon.txt").trim().split("\n").collect();
 }
 
