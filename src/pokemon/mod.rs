@@ -76,6 +76,18 @@ mod test {
         assert_ne!(pokemon.inner, *POKEMON);
     }
 
+    /// Ensure that multiple calls to Pokemon::new return differently-shuffled
+    /// arrays of names.
+    #[test]
+    fn test_new_new() {
+        let pokemon_1 = from_seed(913);
+        let pokemon_2 = from_seed(319);
+
+        assert_ne!(pokemon_1.inner, pokemon_2.inner);
+        assert_ne!(pokemon_1.inner, *POKEMON);
+        assert_ne!(pokemon_2.inner, *POKEMON);
+    }
+
     /// Ensure that into_inner() returns the wrapped array of shuffled Pokémon
     /// names.
     #[test]
