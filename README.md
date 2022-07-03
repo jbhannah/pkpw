@@ -96,5 +96,5 @@ this project is © Jesse Brooklyn Hannah and released under the terms of the
 
 [xkcd]: https://xkcd.com/936/
 [password entropy]: https://www.omnicalculator.com/other/password-entropy
-[names]: https://github.com/jbhannah/pkpw/blob/trunk/pokemon.txt
+[names]: https://github.com/jbhannah/pkpw/blob/trunk/src/pokemon/pokemon.txt
 [mit license]: https://github.com/jbhannah/pkpw/blob/trunk/LICENSE

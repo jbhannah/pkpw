@@ -1,8 +1,10 @@
 #![doc = include_str!("../README.md")]
 
-use std::vec::IntoIter;
+mod pokemon;
 
-use lazy_static::lazy_static;
+use std::array::IntoIter;
+
+pub use crate::pokemon::{POKEMON, POKEMON_COUNT};
 use rand::{prelude::SliceRandom, Rng};
 
 const DIGITS: &'static [&'static str] = &["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -10,13 +12,6 @@ const SPECIAL: &'static [&'static str] = &[
     "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "}", "[",
     "]", "|", ":", ";", "<", ",", ">", ".", "?", "/",
 ];
-
-lazy_static! {
-    /// Vector of all Pokémon names, in English and ASCII-normalized (e.g.
-    /// Nidoran♀ -> Nidoran-F, Flabébé -> Flabebe) for easier keyboard entry.
-    pub static ref POKEMON: Vec<&'static str> =
-        include_str!("../pokemon.txt").trim().split("\n").collect();
-}
 
 /// Generate a password matching the given parameters of character length, word
 /// count, and word separator.
@@ -44,20 +39,20 @@ pub fn generate<R: Rng + Clone + ?Sized>(
 
 /// Shuffle the list of Pokémon using the given RNG and return them as an
 /// iterator.
-pub fn shuffle<R: Rng + ?Sized>(rng: &mut R) -> IntoIter<&str> {
+pub fn shuffle<R: Rng + ?Sized>(rng: &mut R) -> IntoIter<&str, POKEMON_COUNT> {
     let mut pokemon = POKEMON.clone();
     pokemon.shuffle(rng);
     pokemon.into_iter()
 }
 
 /// Pick a number of random Pokémon names from the given iterator.
-pub fn pick<'a>(pokemon: &mut IntoIter<&'a str>, count: usize) -> Vec<&'a str> {
+pub fn pick<'a>(pokemon: &mut IntoIter<&'a str, POKEMON_COUNT>, count: usize) -> Vec<&'a str> {
     pokemon.take(count).collect()
 }
 
 /// Take Pokémon names from the given iterator until the resulting password
 /// would meet the required minimum length.
-pub fn length<'a>(pokemon: &mut IntoIter<&'a str>, length: usize) -> Vec<&'a str> {
+pub fn length<'a>(pokemon: &mut IntoIter<&'a str, POKEMON_COUNT>, length: usize) -> Vec<&'a str> {
     let mut picked: Vec<&str> = vec![];
 
     while picked.join(" ").len() < length {
