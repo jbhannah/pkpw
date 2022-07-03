@@ -1,11 +1,10 @@
 #![doc = include_str!("../README.md")]
 
-mod pokemon;
+pub mod pokemon;
 
-use std::array::IntoIter;
-
-pub use crate::pokemon::{POKEMON, POKEMON_COUNT};
-use rand::{prelude::SliceRandom, Rng};
+use crate::pokemon::Pokemon;
+pub use crate::pokemon::POKEMON;
+use rand::Rng;
 
 const DIGITS: &'static [&'static str] = &["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const SPECIAL: &'static [&'static str] = &[
@@ -22,11 +21,16 @@ pub fn generate<R: Rng + Clone + ?Sized>(
     rng: &mut R,
 ) -> String {
     let mut rng_local = rng.clone();
-    let mut pokemon = shuffle(&mut rng_local);
+    let mut pokemon = Pokemon::new(&mut rng_local);
+
+    let separator_length = match separator {
+        "digit" | "special" => 1,
+        sep => sep.len(),
+    };
 
     let picked = match len {
-        Some(len) => length(&mut pokemon, len),
-        None => pick(&mut pokemon, count),
+        Some(len) => pokemon.length(len, separator_length),
+        None => pokemon.pick(count),
     };
 
     let mut rng_local = rng.clone();
@@ -35,31 +39,6 @@ pub fn generate<R: Rng + Clone + ?Sized>(
         "special" => join(picked, SPECIAL, &mut rng_local),
         sep => picked.join(sep),
     }
-}
-
-/// Shuffle the list of Pokémon using the given RNG and return them as an
-/// iterator.
-pub fn shuffle<R: Rng + ?Sized>(rng: &mut R) -> IntoIter<&str, POKEMON_COUNT> {
-    let mut pokemon = POKEMON.clone();
-    pokemon.shuffle(rng);
-    pokemon.into_iter()
-}
-
-/// Pick a number of random Pokémon names from the given iterator.
-pub fn pick<'a>(pokemon: &mut IntoIter<&'a str, POKEMON_COUNT>, count: usize) -> Vec<&'a str> {
-    pokemon.take(count).collect()
-}
-
-/// Take Pokémon names from the given iterator until the resulting password
-/// would meet the required minimum length.
-pub fn length<'a>(pokemon: &mut IntoIter<&'a str, POKEMON_COUNT>, length: usize) -> Vec<&'a str> {
-    let mut picked: Vec<&str> = vec![];
-
-    while picked.join(" ").len() < length {
-        picked.push(pokemon.next().expect("no unique names left"));
-    }
-
-    picked
 }
 
 /// Join the collection of items with random selections from the set of possible
@@ -150,57 +129,11 @@ mod test {
     #[test]
     fn test_join() {
         let mut rng = rng_from_seed(913);
-        let mut rng_1 = rng.clone();
-
-        let mut pokemon = shuffle(&mut rng);
-        let picked = pick(&mut pokemon, 4);
+        let picked = vec!["Shroomish", "Venusaur", "Froakie", "Tyranitar"];
 
         assert_eq!(
             "Shroomish7Venusaur0Froakie2Tyranitar",
-            join(picked, DIGITS, &mut rng_1)
+            join(picked, DIGITS, &mut rng)
         );
-    }
-
-    /// Ensure that length(…, 40) returns a vector of five strings which create
-    /// a password with a length greater than 40.
-    #[test]
-    fn test_length() {
-        let mut rng = rng_from_seed(913);
-        let mut pokemon = shuffle(&mut rng);
-
-        assert_eq!(
-            vec!["Shroomish", "Venusaur", "Froakie", "Tyranitar", "Wingull"],
-            length(&mut pokemon, 40)
-        );
-    }
-
-    /// Ensure that pick(…, 4) returns a vector of four strings.
-    #[test]
-    fn test_pick() {
-        let mut rng = rng_from_seed(913);
-        let mut pokemon = shuffle(&mut rng);
-
-        assert_eq!(
-            vec!["Shroomish", "Venusaur", "Froakie", "Tyranitar"],
-            pick(&mut pokemon, 4)
-        );
-    }
-
-    /// Ensure that pick() returns different results for different RNGs.
-    #[test]
-    fn test_pick_rand() {
-        let mut rng_1 = rng_from_seed(913);
-        let mut pokemon_1 = shuffle(&mut rng_1);
-
-        let mut rng_2 = rng_from_seed(319);
-        let mut pokemon_2 = shuffle(&mut rng_2);
-
-        assert_ne!(pick(&mut pokemon_1, 4), pick(&mut pokemon_2, 4));
-    }
-
-    /// Ensure that all Pokémon names are loaded.
-    #[test]
-    fn test_pokemon() {
-        assert_eq!(POKEMON.len(), 913);
     }
 }
