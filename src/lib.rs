@@ -6,8 +6,8 @@ use crate::pokemon::Pokemon;
 pub use crate::pokemon::POKEMON;
 use rand::Rng;
 
-const DIGITS: &'static [&'static str] = &["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-const SPECIAL: &'static [&'static str] = &[
+const DIGITS: &[&str] = &["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const SPECIAL: &[&str] = &[
     "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "}", "[",
     "]", "|", ":", ";", "<", ",", ">", ".", "?", "/",
 ];
@@ -51,7 +51,7 @@ pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[&str], rng: &mut R
             let i = rng.gen::<usize>() % separators.len();
             format!("{}{}{}", password, separators[i], next)
         })
-        .unwrap_or("".to_string())
+        .unwrap_or_else(|| "".to_string())
 }
 
 #[cfg(test)]
