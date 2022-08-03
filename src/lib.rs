@@ -68,10 +68,10 @@ mod test {
     /// Ensure that generate() generates a password string.
     #[test]
     fn test_generate() {
-        let mut rng = rng_from_seed(913);
+        let mut rng = rng_from_seed(915);
 
         assert_eq!(
-            "Shroomish Venusaur Froakie Tyranitar".to_string(),
+            "Smoliv Trapinch Swanna Aromatisse".to_string(),
             generate(None, 4, " ", &mut rng)
         );
     }
@@ -80,10 +80,10 @@ mod test {
     /// length.
     #[test]
     fn test_generate_length() {
-        let mut rng = rng_from_seed(913);
+        let mut rng = rng_from_seed(915);
 
         assert_eq!(
-            "Shroomish Venusaur Froakie Tyranitar Wingull".to_string(),
+            "Smoliv Trapinch Swanna Aromatisse Charjabug".to_string(),
             generate(Some(40), 4, " ", &mut rng)
         );
     }
@@ -92,10 +92,10 @@ mod test {
     /// separator between words.
     #[test]
     fn test_generate_separator() {
-        let mut rng = rng_from_seed(913);
+        let mut rng = rng_from_seed(915);
 
         assert_eq!(
-            "Shroomish-Venusaur-Froakie-Tyranitar".to_string(),
+            "Smoliv-Trapinch-Swanna-Aromatisse".to_string(),
             generate(None, 4, "-", &mut rng)
         );
     }
@@ -104,10 +104,10 @@ mod test {
     /// digit separators.
     #[test]
     fn test_generate_digit() {
-        let mut rng = rng_from_seed(913);
+        let mut rng = rng_from_seed(915);
 
         assert_eq!(
-            "Shroomish7Venusaur0Froakie2Tyranitar".to_string(),
+            "Smoliv7Trapinch6Swanna5Aromatisse".to_string(),
             generate(None, 4, "digit", &mut rng)
         );
     }
@@ -116,10 +116,10 @@ mod test {
     /// special character separators.
     #[test]
     fn test_generate_special() {
-        let mut rng = rng_from_seed(913);
+        let mut rng = rng_from_seed(915);
 
         assert_eq!(
-            "Shroomish#Venusaur`Froakie/Tyranitar".to_string(),
+            "Smoliv=Trapinch-Swanna/Aromatisse".to_string(),
             generate(None, 4, "special", &mut rng)
         );
     }
@@ -128,11 +128,11 @@ mod test {
     /// the slice of separators.
     #[test]
     fn test_join() {
-        let mut rng = rng_from_seed(913);
-        let picked = vec!["Shroomish", "Venusaur", "Froakie", "Tyranitar"];
+        let mut rng = rng_from_seed(915);
+        let picked = vec!["Smoliv", "Trapinch", "Swanna", "Aromatisse"];
 
         assert_eq!(
-            "Shroomish7Venusaur0Froakie2Tyranitar",
+            "Smoliv7Trapinch6Swanna5Aromatisse",
             join(picked, DIGITS, &mut rng)
         );
     }
