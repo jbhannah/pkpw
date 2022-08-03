@@ -909,5 +909,7 @@ Quaxly
 Lechonk
 Pawmi
 Smoliv
+Fidough
+Cetitan
 Koraidon
 Miraidon
