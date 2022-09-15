@@ -62,15 +62,15 @@ $$
 where a brute-force attack will need an average of $2^{E-1}$ guesses to
 crack a password with $E$ bits of entropy.
 
-By default, `pkpw` chooses **4** Pokémon names from the pool of [**915** known
+By default, `pkpw` chooses **4** Pokémon names from the pool of [**920** known
 Pokémon][names], resulting in an entropy of
 
 $$
-E = log_2(915^4) \approx 39.35
+E = log_2(920^4) \approx 39.38
 $$
 
-bits. A brute-force attack that knows to use the 915 known Pokémon names as
-the pool of values would take $3.505 \times 10^{11}$ guesses on average to
+bits. A brute-force attack that knows to use the 920 known Pokémon names as
+the pool of values would take $3.582 \times 10^{11}$ guesses on average to
 correctly guess a password, or a bit more than **11 years** at 1000 guesses
 per second.
 

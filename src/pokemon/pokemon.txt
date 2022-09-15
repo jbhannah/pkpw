@@ -911,5 +911,10 @@ Pawmi
 Smoliv
 Fidough
 Cetitan
+Grafaiai
+Klawf
+Armarouge
+Ceruledge
+Cyclizar
 Koraidon
 Miraidon
