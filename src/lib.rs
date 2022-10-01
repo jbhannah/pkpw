@@ -68,10 +68,10 @@ mod test {
     /// Ensure that generate() generates a password string.
     #[test]
     fn test_generate() {
-        let mut rng = rng_from_seed(920);
+        let mut rng = rng_from_seed(921);
 
         assert_eq!(
-            "Hoppip Glastrier Tentacool Pupitar".to_string(),
+            "Hippopotas Serperior Beedrill Cherrim".to_string(),
             generate(None, 4, " ", &mut rng)
         );
     }
@@ -80,10 +80,10 @@ mod test {
     /// length.
     #[test]
     fn test_generate_length() {
-        let mut rng = rng_from_seed(920);
+        let mut rng = rng_from_seed(921);
 
         assert_eq!(
-            "Hoppip Glastrier Tentacool Pupitar Orbeetle".to_string(),
+            "Hippopotas Serperior Beedrill Cherrim Enamorus".to_string(),
             generate(Some(40), 4, " ", &mut rng)
         );
     }
@@ -92,10 +92,10 @@ mod test {
     /// separator between words.
     #[test]
     fn test_generate_separator() {
-        let mut rng = rng_from_seed(920);
+        let mut rng = rng_from_seed(921);
 
         assert_eq!(
-            "Hoppip-Glastrier-Tentacool-Pupitar".to_string(),
+            "Hippopotas-Serperior-Beedrill-Cherrim".to_string(),
             generate(None, 4, "-", &mut rng)
         );
     }
@@ -104,10 +104,10 @@ mod test {
     /// digit separators.
     #[test]
     fn test_generate_digit() {
-        let mut rng = rng_from_seed(920);
+        let mut rng = rng_from_seed(921);
 
         assert_eq!(
-            "Hoppip9Glastrier2Tentacool0Pupitar".to_string(),
+            "Hippopotas7Serperior1Beedrill2Cherrim".to_string(),
             generate(None, 4, "digit", &mut rng)
         );
     }
@@ -116,10 +116,10 @@ mod test {
     /// special character separators.
     #[test]
     fn test_generate_special() {
-        let mut rng = rng_from_seed(920);
+        let mut rng = rng_from_seed(921);
 
         assert_eq!(
-            "Hoppip^Glastrier{Tentacool@Pupitar".to_string(),
+            "Hippopotas)Serperior}Beedrill+Cherrim".to_string(),
             generate(None, 4, "special", &mut rng)
         );
     }
@@ -128,11 +128,11 @@ mod test {
     /// the slice of separators.
     #[test]
     fn test_join() {
-        let mut rng = rng_from_seed(920);
-        let picked = vec!["Hoppip", "Glastrier", "Tentacool", "Pupitar"];
+        let mut rng = rng_from_seed(921);
+        let picked = vec!["Hippopotas", "Serperior", "Beedrill", "Cherrim"];
 
         assert_eq!(
-            "Hoppip9Glastrier2Tentacool0Pupitar",
+            "Hippopotas7Serperior1Beedrill2Cherrim",
             join(picked, DIGITS, &mut rng)
         );
     }
