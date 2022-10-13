@@ -914,6 +914,7 @@ Cetitan
 Grafaiai
 Klawf
 Wiglett
+Farigiraf
 Armarouge
 Ceruledge
 Cyclizar
