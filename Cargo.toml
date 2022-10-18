@@ -11,7 +11,7 @@ homepage = "https://github.com/jbhannah/pkpw"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-arboard = "3.1.0"
+arboard = "3.1.1"
 assert_cmd = "2.0.4"
 atty = "0.2.14"
 clap = { version = "4.0.14", features = ["derive"] }
