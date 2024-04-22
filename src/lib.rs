@@ -59,19 +59,21 @@ mod test {
     use rand::rngs::StdRng;
     use rand::SeedableRng;
 
+    use crate::pokemon::POKEMON_COUNT;
+
     use super::*;
 
-    fn rng_from_seed(state: u64) -> StdRng {
-        StdRng::seed_from_u64(state)
+    fn rng_from_seed(state: usize) -> StdRng {
+        StdRng::seed_from_u64(state as u64)
     }
 
     /// Ensure that generate() generates a password string.
     #[test]
     fn test_generate() {
-        let mut rng = rng_from_seed(922);
+        let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Lilligant Tranquill Shelmet Mesprit".to_string(),
+            "Clobbopus Mudbray Graveler Frosmoth".to_string(),
             generate(None, 4, " ", &mut rng)
         );
     }
@@ -80,10 +82,10 @@ mod test {
     /// length.
     #[test]
     fn test_generate_length() {
-        let mut rng = rng_from_seed(922);
+        let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Lilligant Tranquill Shelmet Mesprit Tympole".to_string(),
+            "Clobbopus Mudbray Graveler Frosmoth Dustox".to_string(),
             generate(Some(40), 4, " ", &mut rng)
         );
     }
@@ -92,10 +94,10 @@ mod test {
     /// separator between words.
     #[test]
     fn test_generate_separator() {
-        let mut rng = rng_from_seed(922);
+        let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Lilligant-Tranquill-Shelmet-Mesprit".to_string(),
+            "Clobbopus-Mudbray-Graveler-Frosmoth".to_string(),
             generate(None, 4, "-", &mut rng)
         );
     }
@@ -104,10 +106,10 @@ mod test {
     /// digit separators.
     #[test]
     fn test_generate_digit() {
-        let mut rng = rng_from_seed(922);
+        let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Lilligant6Tranquill8Shelmet6Mesprit".to_string(),
+            "Clobbopus6Mudbray2Graveler7Frosmoth".to_string(),
             generate(None, 4, "digit", &mut rng)
         );
     }
@@ -116,10 +118,10 @@ mod test {
     /// special character separators.
     #[test]
     fn test_generate_special() {
-        let mut rng = rng_from_seed(922);
+        let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Lilligant@Tranquill+Shelmet=Mesprit".to_string(),
+            "Clobbopus]Mudbray!Graveler-Frosmoth".to_string(),
             generate(None, 4, "special", &mut rng)
         );
     }
@@ -128,11 +130,11 @@ mod test {
     /// the slice of separators.
     #[test]
     fn test_join() {
-        let mut rng = rng_from_seed(922);
+        let mut rng = rng_from_seed(POKEMON_COUNT);
         let picked = vec!["Lilligant", "Tranquill", "Shelmet", "Mesprit"];
 
         assert_eq!(
-            "Lilligant6Tranquill8Shelmet6Mesprit",
+            "Lilligant6Tranquill2Shelmet7Mesprit",
             join(picked, DIGITS, &mut rng)
         );
     }

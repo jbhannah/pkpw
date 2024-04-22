@@ -3,7 +3,7 @@ use std::array::IntoIter;
 use lazy_static::lazy_static;
 use rand::{prelude::SliceRandom, Rng};
 
-pub const POKEMON_COUNT: usize = 922;
+pub const POKEMON_COUNT: usize = 1025;
 
 lazy_static! {
     /// Array of all Pokémon names, in English and ASCII-normalized (e.g.
@@ -61,8 +61,8 @@ mod test {
 
     use super::*;
 
-    fn from_seed(state: u64) -> Pokemon<'static> {
-        let mut rng = StdRng::seed_from_u64(state);
+    fn from_seed(state: usize) -> Pokemon<'static> {
+        let mut rng = StdRng::seed_from_u64(state as u64);
         Pokemon::new(&mut rng)
     }
 
@@ -70,7 +70,7 @@ mod test {
     /// Pokémon names.
     #[test]
     fn test_new() {
-        let pokemon = from_seed(922);
+        let pokemon = from_seed(POKEMON_COUNT);
 
         assert_eq!(pokemon.inner.len(), POKEMON_COUNT);
         assert_ne!(pokemon.inner, *POKEMON);
@@ -80,7 +80,7 @@ mod test {
     /// arrays of names.
     #[test]
     fn test_new_new() {
-        let pokemon_1 = from_seed(922);
+        let pokemon_1 = from_seed(POKEMON_COUNT);
         let pokemon_2 = from_seed(319);
 
         assert_ne!(pokemon_1.inner, pokemon_2.inner);
@@ -92,7 +92,7 @@ mod test {
     /// names.
     #[test]
     fn test_into_inner() {
-        let pokemon = from_seed(922);
+        let pokemon = from_seed(POKEMON_COUNT);
         let inner = pokemon.into_inner();
 
         assert_eq!(inner.len(), POKEMON_COUNT);
@@ -104,11 +104,11 @@ mod test {
     /// length 1.
     #[test]
     fn test_length() {
-        let mut pokemon = from_seed(922);
+        let mut pokemon = from_seed(POKEMON_COUNT);
         let picked = pokemon.length(40, 1);
 
         assert_eq!(
-            vec!["Lilligant", "Tranquill", "Shelmet", "Mesprit", "Tympole"],
+            vec!["Clobbopus", "Mudbray", "Graveler", "Frosmoth", "Dustox"],
             picked
         );
         assert!(picked.join(" ").len() > 40);
@@ -117,10 +117,10 @@ mod test {
     /// Ensure that pick(4) returns a vector of four strings.
     #[test]
     fn test_pick() {
-        let mut pokemon = from_seed(922);
+        let mut pokemon = from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            vec!["Lilligant", "Tranquill", "Shelmet", "Mesprit"],
+            vec!["Clobbopus", "Mudbray", "Graveler", "Frosmoth"],
             pokemon.pick(4)
         );
     }
@@ -129,15 +129,15 @@ mod test {
     /// names.
     #[test]
     fn test_pick_pick() {
-        let mut pokemon = from_seed(922);
+        let mut pokemon = from_seed(POKEMON_COUNT);
 
-        assert_eq!(vec!["Lilligant", "Tranquill", "Shelmet"], pokemon.pick(3));
-        assert_eq!(vec!["Mesprit", "Tympole"], pokemon.pick(2));
+        assert_eq!(vec!["Clobbopus", "Mudbray", "Graveler"], pokemon.pick(3));
+        assert_eq!(vec!["Frosmoth", "Dustox"], pokemon.pick(2));
     }
 
     /// Ensure that all Pokémon names are loaded.
     #[test]
     fn test_pokemon() {
-        assert_eq!(POKEMON.len(), 922);
+        assert_eq!(POKEMON.len(), POKEMON_COUNT);
     }
 }
