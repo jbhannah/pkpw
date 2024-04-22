@@ -62,30 +62,31 @@ $$
 where a brute-force attack will need an average of $2^{E-1}$ guesses to
 crack a password with $E$ bits of entropy.
 
-By default, `pkpw` chooses **4** Pokémon names from the pool of [**922** known
+By default, `pkpw` chooses **4** Pokémon names from the pool of [**1025** known
 Pokémon][names], resulting in an entropy of
 
 $$
-E = log_2(922^4) \approx 39.39
+E = log_2(1025^4) \approx 40.01
 $$
 
-bits. A dictionary attack that knows to use the 922 known Pokémon names as the
-pool of values would take $3.613 \times 10^{11}$ guesses on average to correctly
-guess a password, or about **11 years and 5 months** at 1000 guesses per second.
+bits. A dictionary attack that knows to use the 1025 known Pokémon names as the
+pool of values would take $1.104 \times 10^{12}$ guesses on average to correctly
+guess a password, or about **34 years, 11 months, and 21 days** at 1000 guesses
+per second.
 
-At an average length of about 7.5 characters per Pokémon name, passwords
-generated using the default settings have an average length of about **33**
+At an average length of about 7.67 characters per Pokémon name, passwords
+generated using the default settings have an average length of about **34**
 characters (4 Pokémon names, plus one space separating each name for a total of
 3 spaces). A brute-force attack that uses a pool of **95** standard US keyboard
 characters (alphanumeric, special characters, and space) would be working
 against
 
 $$
-E = log_2(95^{33}) \approx 216.805
+E = log_2(95^{34}) \approx 222.375
 $$
 
-bits of entropy, taking an average of $9.201 \times 10^{64}$ guesses, or
-**$2.916 \times 10^{54}$ years**, to correctly guess a password.
+bits of entropy, taking an average of $1.748 \times 10^{67}$ guesses, or
+**$5.540 \times 10^{56}$ years**, to correctly guess a password.
 
 ## Copyright
 
