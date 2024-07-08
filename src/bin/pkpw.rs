@@ -1,3 +1,5 @@
+use std::io::{stdout, IsTerminal};
+
 use arboard::Clipboard;
 use clap::Parser;
 use pkpw::generate;
@@ -45,7 +47,7 @@ fn main() {
     } else {
         print!("{}", password);
 
-        if atty::is(atty::Stream::Stdout) {
+        if stdout().is_terminal() {
             println!();
         }
     }
