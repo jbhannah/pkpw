@@ -73,7 +73,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Clobbopus Mudbray Graveler Frosmoth".to_string(),
+            "Makuhita Milotic Shiftry Charmander".to_string(),
             generate(None, 4, " ", &mut rng)
         );
     }
@@ -85,7 +85,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Clobbopus Mudbray Graveler Frosmoth Dustox".to_string(),
+            "Makuhita Milotic Shiftry Charmander Swadloon".to_string(),
             generate(Some(40), 4, " ", &mut rng)
         );
     }
@@ -97,7 +97,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Clobbopus-Mudbray-Graveler-Frosmoth".to_string(),
+            "Makuhita-Milotic-Shiftry-Charmander".to_string(),
             generate(None, 4, "-", &mut rng)
         );
     }
@@ -109,7 +109,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Clobbopus6Mudbray2Graveler7Frosmoth".to_string(),
+            "Makuhita6Milotic2Shiftry7Charmander".to_string(),
             generate(None, 4, "digit", &mut rng)
         );
     }
@@ -121,7 +121,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Clobbopus]Mudbray!Graveler-Frosmoth".to_string(),
+            "Makuhita]Milotic!Shiftry-Charmander".to_string(),
             generate(None, 4, "special", &mut rng)
         );
     }

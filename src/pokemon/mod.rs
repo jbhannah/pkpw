@@ -108,7 +108,7 @@ mod test {
         let picked = pokemon.length(40, 1);
 
         assert_eq!(
-            vec!["Clobbopus", "Mudbray", "Graveler", "Frosmoth", "Dustox"],
+            vec!["Makuhita", "Milotic", "Shiftry", "Charmander", "Swadloon"],
             picked
         );
         assert!(picked.join(" ").len() > 40);
@@ -120,7 +120,7 @@ mod test {
         let mut pokemon = from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            vec!["Clobbopus", "Mudbray", "Graveler", "Frosmoth"],
+            vec!["Makuhita", "Milotic", "Shiftry", "Charmander"],
             pokemon.pick(4)
         );
     }
@@ -131,8 +131,8 @@ mod test {
     fn test_pick_pick() {
         let mut pokemon = from_seed(POKEMON_COUNT);
 
-        assert_eq!(vec!["Clobbopus", "Mudbray", "Graveler"], pokemon.pick(3));
-        assert_eq!(vec!["Frosmoth", "Dustox"], pokemon.pick(2));
+        assert_eq!(vec!["Makuhita", "Milotic", "Shiftry"], pokemon.pick(3));
+        assert_eq!(vec!["Charmander", "Swadloon"], pokemon.pick(2));
     }
 
     /// Ensure that all Pokémon names are loaded.
