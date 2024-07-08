@@ -1018,8 +1018,8 @@ Ogerpon
 Archaludon
 Hydrapple
 Gouging Fire
-Raging Bold
-Iron Bolder
+Raging Bolt
+Iron Boulder
 Iron Crown
 Terapagos
 Pecharunt

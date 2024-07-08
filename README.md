@@ -17,7 +17,7 @@ cargo install pkpw
 
 ```console
 $ pkpw -h
-pkpw 1.2.1
+pkpw 1.2.2
 Jesse Brooklyn Hannah <jesse@jbhannah.net>
 What if correct horse battery staple, but Pokémon.
 
