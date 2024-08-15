@@ -48,7 +48,7 @@ pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[&str], rng: &mut R
         .into_iter()
         .map(|name| name.to_owned())
         .reduce(|password, next| {
-            let i = rng.gen::<usize>() % separators.len();
+            let i = rng.random::<u32>() as usize % separators.len();
             format!("{}{}{}", password, separators[i], next)
         })
         .unwrap_or_else(|| "".to_string())
@@ -109,7 +109,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita6Milotic2Shiftry7Charmander".to_string(),
+            "Makuhita0Milotic6Shiftry8Charmander".to_string(),
             generate(None, 4, "digit", &mut rng)
         );
     }
@@ -121,7 +121,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita]Milotic!Shiftry-Charmander".to_string(),
+            "Makuhita=Milotic;Shiftry]Charmander".to_string(),
             generate(None, 4, "special", &mut rng)
         );
     }
@@ -134,7 +134,7 @@ mod test {
         let picked = vec!["Lilligant", "Tranquill", "Shelmet", "Mesprit"];
 
         assert_eq!(
-            "Lilligant6Tranquill2Shelmet7Mesprit",
+            "Lilligant0Tranquill6Shelmet8Mesprit",
             join(picked, DIGITS, &mut rng)
         );
     }
