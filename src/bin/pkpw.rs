@@ -3,7 +3,7 @@ use std::io::{stdout, IsTerminal};
 use arboard::Clipboard;
 use clap::Parser;
 use pkpw::generate;
-use rand::thread_rng;
+use rand::rng;
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
@@ -36,7 +36,7 @@ struct Args {
 /// Generate a password of four random Pokémon names joined by a separator.
 fn main() {
     let args = Args::parse();
-    let mut rng = thread_rng();
+    let mut rng = rng();
     let password = generate(args.length, args.count, &args.separator, &mut rng);
 
     if args.copy {
