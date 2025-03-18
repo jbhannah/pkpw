@@ -1,7 +1,7 @@
 # pkpw
 
 [![Crates.io](https://img.shields.io/crates/v/pkpw)](https://crates.io/crates/pkpw)
-[![.github/workflows/cargo.yml](https://github.com/jbhannah/pkpw/actions/workflows/cargo.yml/badge.svg)](https://github.com/jbhannah/pkpw/actions/workflows/cargo.yml)
+[![.github/workflows/ci.yml](https://github.com/jbhannah/pkpw/actions/workflows/ci.yml/badge.svg)](https://github.com/jbhannah/pkpw/actions/workflows/ci.yml)
 
 What if [`correct horse battery staple`][xkcd], but Pokémon.
 

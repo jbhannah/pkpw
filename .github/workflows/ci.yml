@@ -6,16 +6,20 @@ on:
     branches:
       - trunk
 jobs:
-  build:
-    name: Build
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cargo clippy --verbose
+  test-cargo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: cargo build --verbose
       - run: cargo test --verbose
-  clippy:
-    name: Clippy
+  test-wasm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: cargo clippy --verbose
+      - run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+      - run: wasm-pack test --node
