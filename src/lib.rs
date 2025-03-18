@@ -2,14 +2,17 @@
 
 pub mod pokemon;
 
+#[cfg(target_arch = "wasm32")]
+pub mod wasm;
+
 use crate::pokemon::Pokemon;
 pub use crate::pokemon::POKEMON;
 use rand::Rng;
 
-const DIGITS: &[&str] = &["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-const SPECIAL: &[&str] = &[
-    "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "}", "[",
-    "]", "|", ":", ";", "<", ",", ">", ".", "?", "/",
+const DIGITS: &[char] = &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const SPECIAL: &[char] = &[
+    '~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '+', '=', '{', '}', '[',
+    ']', '|', ':', ';', '<', ',', '>', '.', '?', '/',
 ];
 
 /// Generate a password matching the given parameters of character length, word
@@ -43,7 +46,7 @@ pub fn generate<R: Rng + Clone + ?Sized>(
 
 /// Join the collection of items with random selections from the set of possible
 /// separators.
-pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[&str], rng: &mut R) -> String {
+pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[char], rng: &mut R) -> String {
     picked
         .into_iter()
         .map(|name| name.to_owned())
