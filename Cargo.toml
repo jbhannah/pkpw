@@ -8,14 +8,16 @@ description = "What if correct horse battery staple, but Pokémon."
 readme = "README.md"
 repository = "https://github.com/jbhannah/pkpw"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-arboard = "3.4.1"
-assert_cmd = "2.0.16"
-clap = { version = "4.5.26", features = ["derive"] }
 lazy_static = "1.4.0"
 rand = "0.9.0-beta.0"
+wasm-bindgen = "0.2"
+
+[dev-dependencies]
+assert_cmd = "2.0.16"
 
 [profile.release]
 codegen-units = 1
@@ -23,3 +25,10 @@ lto = true
 opt-level = "z"
 panic = "abort"
 strip = true
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+arboard = "3.4.1"
+clap = { version = "4.5.26", features = ["derive"] }
+
+[target.wasm32-unknown-unknown.dependencies]
+getrandom = { version = "0.3.2", features = ["wasm_js"] }

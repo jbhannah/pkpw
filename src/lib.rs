@@ -1,6 +1,7 @@
 #![doc = include_str!("../README.md")]
 
 pub mod pokemon;
+pub mod wasm;
 
 use crate::pokemon::Pokemon;
 pub use crate::pokemon::POKEMON;
