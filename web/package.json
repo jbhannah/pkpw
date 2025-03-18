@@ -12,8 +12,11 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.9.3",
+    "@tailwindcss/vite": "^4.0.14",
+    "daisyui": "^5.0.6",
     "eslint": "^9.22.0",
     "eslint-config-preact": "^1.5.0",
+    "tailwindcss": "^4.0.14",
     "typescript": "^5.8.2",
     "vite": "^6.0.4",
     "vite-plugin-top-level-await": "^1.5.0",
