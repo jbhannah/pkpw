@@ -1,5 +1,5 @@
 import { useSignal } from "@preact/signals";
-import { generate_password as pkpw } from "pkpw";
+import { pkpw } from "pkpw";
 
 export function Password() {
   const password = useSignal(pkpw());
