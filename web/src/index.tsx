@@ -40,7 +40,17 @@ export function App() {
           </a>
         </p>
       </div>
-      <footer class="p-4 flex flex-row w-full">Footer</footer>
+      <footer class="p-4 flex flex-row w-full justify-center gap-x-2">
+        <a class="link link-accent" href="https://github.com/jbhannah/pkpw">
+          GitHub
+        </a>
+        <a class="link link-accent" href="https://crates.io/crates/pkpw">
+          crates.io
+        </a>
+        <a class="link link-accent" href="https://npmjs.com/package/pkpw">
+          npm
+        </a>
+      </footer>
     </div>
   );
 }
