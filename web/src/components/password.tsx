@@ -5,7 +5,7 @@ export function Password() {
   const password = useSignal(pkpw());
 
   return (
-    <div class="flex flex-col items-center gap-y-4">
+    <div class="w-full flex flex-col items-center gap-y-4">
       <label class="w-full max-w-lg">
         <span class="sr-only">Generated password</span>
         <input
@@ -18,13 +18,15 @@ export function Password() {
       </label>
       <div class="flex gap-x-4">
         <button
-          class="btn btn-primary"
+          type="button"
+          class="btn-primary"
           onClick={() => navigator.clipboard.writeText(password.value)}
         >
           Copy
         </button>
         <button
-          class="btn btn-primary"
+          type="button"
+          class="btn-primary"
           onClick={() => (password.value = pkpw())}
         >
           Generate

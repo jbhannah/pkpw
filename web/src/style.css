@@ -1,2 +1,14 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+h1 {
+  @apply text-6xl mb-6;
+}
+
+p {
+  @apply mb-6;
+}
+
+button {
+  @apply btn;
+}
