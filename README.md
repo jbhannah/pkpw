@@ -1,14 +1,23 @@
 # pkpw
 
 [![Crates.io](https://img.shields.io/crates/v/pkpw)](https://crates.io/crates/pkpw)
+[![npm](https://img.shields.io/npm/v/pkpw)](https://www.npmjs.com/package/pkpw)
 [![.github/workflows/ci.yml](https://github.com/jbhannah/pkpw/actions/workflows/ci.yml/badge.svg)](https://github.com/jbhannah/pkpw/actions/workflows/ci.yml)
 
 What if [`correct horse battery staple`][xkcd], but Pokémon.
 
 ## Installation
 
+### CLI/Rust Library
+
 ```sh
 cargo install pkpw
+```
+
+### npm Library
+
+```sh
+npm add pkpw
 ```
 
 ## Usage
@@ -37,7 +46,7 @@ OPTIONS:
     -V, --version                  Print version information
 ```
 
-### Library
+### Rust
 
 ```rust
 use pkpw::generate;
@@ -45,6 +54,14 @@ use rand::thread_rng;
 
 let mut rng = thread_rng();
 let password = generate(None, 4, " ", &mut rng);
+```
+
+### Javascript/Typescript
+
+```typescript
+import { pkpw } from "pkpw";
+
+const password = pkpw();
 ```
 
 ## But is it secure?
