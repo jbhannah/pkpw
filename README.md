@@ -1,4 +1,4 @@
-# pkpw
+# [pkpw](https://pkpw.jbhannah.net)
 
 [![Crates.io](https://img.shields.io/crates/v/pkpw)](https://crates.io/crates/pkpw)
 [![npm](https://img.shields.io/npm/v/pkpw)](https://www.npmjs.com/package/pkpw)
