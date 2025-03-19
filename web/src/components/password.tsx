@@ -16,7 +16,13 @@ export function Password() {
           readonly
         />
       </label>
-      <div>
+      <div class="flex gap-x-4">
+        <button
+          class="btn btn-primary"
+          onClick={() => navigator.clipboard.writeText(password.value)}
+        >
+          Copy
+        </button>
         <button
           class="btn btn-primary"
           onClick={() => (password.value = pkpw())}
