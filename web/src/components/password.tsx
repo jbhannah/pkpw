@@ -6,7 +6,7 @@ export function Password() {
 
   return (
     <div class="w-full flex flex-col items-center gap-y-4">
-      <label class="w-full max-w-lg">
+      <label class="w-full">
         <span class="sr-only">Generated password</span>
         <input
           class="w-full input input-xl text-center"
@@ -19,14 +19,14 @@ export function Password() {
       <div class="flex gap-x-4">
         <button
           type="button"
-          class="btn-primary"
+          class="btn btn-accent"
           onClick={() => navigator.clipboard.writeText(password.value)}
         >
           Copy
         </button>
         <button
           type="button"
-          class="btn-primary"
+          class="btn btn-primary"
           onClick={() => (password.value = pkpw())}
         >
           Generate
