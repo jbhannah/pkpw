@@ -24,7 +24,12 @@ export function App() {
         <h1 class="text-6xl mb-6 text-center">pkpw</h1>
         <h2 class="text-xl mb-6 text-center max-w-xl">
           What if{" "}
-          <a class="link link-accent" href="https://xkcd.com/936/">
+          <a
+            class="link link-accent"
+            href="https://xkcd.com/936/"
+            target="_blank"
+            rel="noopener"
+          >
             correct horse battery staple
           </a>
           {", "}but Pokémon.
@@ -32,22 +37,66 @@ export function App() {
         <div class="w-full max-w-lg mt-8 mb-16">
           <Password />
         </div>
-        <p class="max-w-2xl text-center">
+        <p class="max-w-2xl text-center mb-4">
           A password generator that uses Pokémon names to generate strong
           passwords.{" "}
-          <a class="link link-accent" href="https://github.com/jbhannah/pkpw">
+          <a
+            class="link link-accent"
+            href="https://github.com/jbhannah/pkpw"
+            target="_blank"
+            rel="noopener"
+          >
             Learn more
           </a>
         </p>
+        <p class="max-w-2xl text-center mb-4">
+          All Pokémon names are ™ and ©{" "}
+          <a
+            class="link link-accent"
+            href="https://www.pokemon.com"
+            target="_blank"
+            rel="noopener"
+          >
+            The Pokémon Company
+          </a>
+          {"."}
+        </p>
+        <p class="max-w-2xl text-center">
+          Created by{" "}
+          <a
+            class="link link-accent"
+            href="https://jbhannah.net"
+            target="_blank"
+            rel="noopener"
+          >
+            Jesse Brooklyn Hannah
+          </a>
+          {"."}
+        </p>
       </div>
       <footer class="p-4 flex flex-row w-full justify-center gap-x-2">
-        <a class="link link-accent" href="https://github.com/jbhannah/pkpw">
+        <a
+          class="link link-accent"
+          href="https://github.com/jbhannah/pkpw"
+          target="_blank"
+          rel="noopener"
+        >
           GitHub
         </a>
-        <a class="link link-accent" href="https://crates.io/crates/pkpw">
+        <a
+          class="link link-accent"
+          href="https://crates.io/crates/pkpw"
+          target="_blank"
+          rel="noopener"
+        >
           crates.io
         </a>
-        <a class="link link-accent" href="https://npmjs.com/package/pkpw">
+        <a
+          class="link link-accent"
+          href="https://npmjs.com/package/pkpw"
+          target="_blank"
+          rel="noopener"
+        >
           npm
         </a>
       </footer>
