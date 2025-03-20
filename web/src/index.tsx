@@ -1,8 +1,8 @@
 import { render } from "preact";
 
 import { PostHogProvider } from "posthog-js/react";
-import { Password } from "./components/password";
-import { ThemeToggle } from "./components/theme-toggle";
+import { Password } from "./components/Password";
+import { ThemeToggle } from "./components/ThemeToggle";
 import "./style.css";
 
 const options = {
