@@ -5,6 +5,6 @@ interface ButtonProps extends ComponentProps<"button"> {
   type?: "button" | "submit" | "reset";
 }
 
-export function Button({ classes, type, ...props }: Readonly<ButtonProps>) {
-  return <button type={type ?? "button"} class={`btn ${classes}`} {...props} />;
-}
+export const Button = ({ classes, type, ...props }: Readonly<ButtonProps>) => (
+  <button type={type ?? "button"} class={`btn ${classes}`} {...props} />
+);

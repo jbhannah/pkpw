@@ -9,7 +9,7 @@ export interface PasswordSignalProps {
   password: Signal<string>;
 }
 
-export function PasswordBox() {
+export const PasswordBox = () => {
   const password = useSignal("");
 
   useEffect(() => generatePassword(password), [password]);
@@ -23,4 +23,4 @@ export function PasswordBox() {
       </div>
     </div>
   );
-}
+};
