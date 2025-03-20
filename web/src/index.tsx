@@ -25,5 +25,4 @@ const App = () => (
   </PostHogProvider>
 );
 
-const parent = document.getElementById("app");
-parent && render(<App />, parent);
+render(<App />, document.getElementById("app")!);
