@@ -44,7 +44,7 @@ export function App() {
             {", "}but Pokémon.
           </h2>
           <div class="w-full max-w-lg mt-8 mb-16">
-            <Password />
+              <PasswordBox />
           </div>
           <p class="max-w-2xl text-center mb-4">
             A password generator that uses Pokémon names to generate strong

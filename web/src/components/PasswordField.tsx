@@ -1,4 +1,4 @@
-import { PasswordSignalProps } from "./Password";
+import { PasswordSignalProps } from "./PasswordBox";
 
 export function PasswordField({ password }: Readonly<PasswordSignalProps>) {
   return (

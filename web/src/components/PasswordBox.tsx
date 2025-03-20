@@ -9,7 +9,7 @@ export interface PasswordSignalProps {
   password: Signal<string>;
 }
 
-export function Password() {
+export function PasswordBox() {
   const password = useSignal("");
 
   useEffect(() => generatePassword(password), [password]);
