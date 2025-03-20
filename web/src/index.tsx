@@ -1,7 +1,7 @@
 import { render } from "preact";
 
 import { PostHogProvider } from "posthog-js/react";
-import { Password } from "./components/Password";
+import { PasswordBox } from "./components/PasswordBox";
 import { ThemeToggle } from "./components/ThemeToggle";
 import "./style.css";
 
