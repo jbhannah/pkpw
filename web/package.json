@@ -9,18 +9,18 @@
   "dependencies": {
     "@preact/signals": "^2.0.1",
     "pkpw": "^1.3.1",
-    "posthog-js": "^1.231.2",
-    "preact": "^10.25.3"
+    "posthog-js": "^1.232.3",
+    "preact": "^10.26.4"
   },
   "devDependencies": {
-    "@preact/preset-vite": "^2.9.3",
-    "@tailwindcss/vite": "^4.0.14",
-    "daisyui": "^5.0.6",
+    "@preact/preset-vite": "^2.10.1",
+    "@tailwindcss/vite": "^4.0.15",
+    "daisyui": "^5.0.9",
     "eslint": "^9.22.0",
     "eslint-config-preact": "^1.5.0",
-    "tailwindcss": "^4.0.14",
+    "tailwindcss": "^4.0.15",
     "typescript": "^5.8.2",
-    "vite": "^6.0.4",
+    "vite": "^6.2.2",
     "vite-plugin-top-level-await": "^1.5.0",
     "vite-plugin-wasm": "^3.4.1"
   },
