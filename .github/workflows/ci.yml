@@ -5,6 +5,10 @@ on:
   pull_request:
     branches:
       - trunk
+
+permissions:
+  contents: read
+
 jobs:
   clippy:
     runs-on: ubuntu-latest
