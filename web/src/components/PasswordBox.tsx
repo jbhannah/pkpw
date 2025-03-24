@@ -1,15 +1,15 @@
 import { Signal, useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import { generatePassword } from "../util";
-import { PasswordCopyButton } from "./PasswordCopyButton";
-import { PasswordField } from "./PasswordField";
-import { PasswordGenerateButton } from "./PasswordGenerateButton";
+import PasswordCopyButton from "./PasswordCopyButton";
+import PasswordField from "./PasswordField";
+import PasswordGenerateButton from "./PasswordGenerateButton";
 
 export interface PasswordSignalProps {
   password: Signal<string>;
 }
 
-export const PasswordBox = () => {
+const PasswordBox = () => {
   const password = useSignal("");
 
   useEffect(() => generatePassword(password), [password]);
@@ -24,3 +24,5 @@ export const PasswordBox = () => {
     </div>
   );
 };
+
+export default PasswordBox;

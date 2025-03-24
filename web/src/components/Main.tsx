@@ -1,6 +1,6 @@
-import { PasswordBox } from "./PasswordBox";
+import PasswordBox from "./PasswordBox";
 
-export const Main = () => (
+const Main = () => (
   <main class="flex flex-col items-center mt-8 p-4">
     <h1 class="text-6xl mb-6 text-center">pkpw</h1>
     <h2 class="text-xl mb-6 text-center max-w-xl">
@@ -55,3 +55,5 @@ export const Main = () => (
     </p>
   </main>
 );
+
+export default Main;

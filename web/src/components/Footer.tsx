@@ -1,4 +1,4 @@
-export const Footer = () => (
+const Footer = () => (
   <footer class="p-4 flex flex-row w-full justify-center gap-x-2">
     <a
       class="link link-accent"
@@ -26,3 +26,5 @@ export const Footer = () => (
     </a>
   </footer>
 );
+
+export default Footer;

@@ -1,6 +1,6 @@
 import { PasswordSignalProps } from "./PasswordBox";
 
-export const PasswordField = ({ password }: Readonly<PasswordSignalProps>) => (
+const PasswordField = ({ password }: Readonly<PasswordSignalProps>) => (
   <label class="w-full">
     <span class="sr-only">Generated password</span>
     <input
@@ -12,3 +12,5 @@ export const PasswordField = ({ password }: Readonly<PasswordSignalProps>) => (
     />
   </label>
 );
+
+export default PasswordField;

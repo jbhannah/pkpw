@@ -1,4 +1,4 @@
-export const ThemeToggle = () => (
+const ThemeToggle = () => (
   <label className="swap swap-rotate">
     <span class="sr-only">Toggle theme</span>
     <input type="checkbox" className="theme-controller" value="light" />
@@ -20,3 +20,5 @@ export const ThemeToggle = () => (
     </svg>
   </label>
 );
+
+export default ThemeToggle;

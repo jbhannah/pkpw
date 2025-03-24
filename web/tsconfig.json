@@ -1,24 +1,28 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "noEmit": true,
-    "allowJs": true,
-    "checkJs": true,
-
-    /* Type Checking */
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-
-    /* Preact Config */
+    "lib": ["DOM", "ES2020"],
     "jsx": "react-jsx",
-    "jsxImportSource": "preact",
+    "target": "ES2020",
+    "noEmit": true,
     "skipLibCheck": true,
+    "jsxImportSource": "preact",
+    "useDefineForClassFields": true,
+
+    /* modules */
+    "module": "ESNext",
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "paths": {
       "react": ["./node_modules/preact/compat/"],
       "react-dom": ["./node_modules/preact/compat/"]
-    }
+    },
+
+    /* type checking */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
-  "include": ["node_modules/vite/client.d.ts", "**/*"]
+  "include": ["src"]
 }
