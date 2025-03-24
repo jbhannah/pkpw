@@ -7,6 +7,7 @@ license = "MIT"
 description = "What if correct horse battery staple, but Pokémon."
 readme = "README.md"
 repository = "https://github.com/jbhannah/pkpw"
+exclude = ["web/"]
 
 [lib]
 crate-type = ["cdylib", "rlib"]
