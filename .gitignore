@@ -1,1 +1,4 @@
-/target
+pkg/
+target/
+web/dist/
+web/node_modules/

@@ -1,0 +1,6 @@
+{
+  "extends": ["./web/biome.json"],
+  "files": {
+    "ignore": ["target", "pkg"]
+  }
+}
