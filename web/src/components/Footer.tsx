@@ -4,7 +4,7 @@ const Footer = () => (
       class="link link-accent"
       href="https://github.com/jbhannah/pkpw"
       target="_blank"
-      rel="noopener"
+      rel="noreferrer noopener"
     >
       GitHub
     </a>
@@ -12,7 +12,7 @@ const Footer = () => (
       class="link link-accent"
       href="https://crates.io/crates/pkpw"
       target="_blank"
-      rel="noopener"
+      rel="noreferrer noopener"
     >
       crates.io
     </a>
@@ -20,7 +20,7 @@ const Footer = () => (
       class="link link-accent"
       href="https://npmjs.com/package/pkpw"
       target="_blank"
-      rel="noopener"
+      rel="noreferrer noopener"
     >
       npm
     </a>

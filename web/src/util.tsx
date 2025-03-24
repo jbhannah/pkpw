@@ -1,4 +1,4 @@
-import { Signal } from "@preact/signals";
+import type { Signal } from "@preact/signals";
 import { pkpw } from "pkpw";
 import posthog from "posthog-js";
 

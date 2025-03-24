@@ -1,4 +1,5 @@
 import { render } from "preact";
 import App from "./App";
 
-render(<App />, document.getElementById("app")!);
+const parent = document.getElementById("app");
+parent && render(<App />, parent);

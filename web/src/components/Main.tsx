@@ -9,7 +9,7 @@ const Main = () => (
         class="link link-accent"
         href="https://xkcd.com/936/"
         target="_blank"
-        rel="noopener"
+        rel="noreferrer noopener"
       >
         correct horse battery staple
       </a>
@@ -24,7 +24,7 @@ const Main = () => (
         class="link link-accent"
         href="https://github.com/jbhannah/pkpw"
         target="_blank"
-        rel="noopener"
+        rel="noreferrer noopener"
       >
         Learn more
       </a>
@@ -35,7 +35,7 @@ const Main = () => (
         class="link link-accent"
         href="https://www.pokemon.com"
         target="_blank"
-        rel="noopener"
+        rel="noreferrer noopener"
       >
         The Pokémon Company
       </a>
@@ -47,7 +47,7 @@ const Main = () => (
         class="link link-accent"
         href="https://jbhannah.net"
         target="_blank"
-        rel="noopener"
+        rel="noreferrer noopener"
       >
         Jesse Brooklyn Hannah
       </a>

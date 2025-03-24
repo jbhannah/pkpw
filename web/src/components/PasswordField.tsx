@@ -1,4 +1,4 @@
-import { PasswordSignalProps } from "./PasswordBox";
+import type { PasswordSignalProps } from "./PasswordBox";
 
 const PasswordField = ({ password }: Readonly<PasswordSignalProps>) => (
   <label class="w-full">

@@ -21,6 +21,7 @@
 
     /* type checking */
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },

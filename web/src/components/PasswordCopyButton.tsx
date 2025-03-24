@@ -1,6 +1,6 @@
 import { copyPassword } from "../util";
 import Button from "./Button";
-import { PasswordSignalProps } from "./PasswordBox";
+import type { PasswordSignalProps } from "./PasswordBox";
 
 const PasswordCopyButton = ({ password }: Readonly<PasswordSignalProps>) => (
   <Button classes="btn-accent" onClick={() => copyPassword(password)}>

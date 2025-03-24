@@ -1,6 +1,6 @@
 import { generatePassword } from "../util";
 import Button from "./Button";
-import { PasswordSignalProps } from "./PasswordBox";
+import type { PasswordSignalProps } from "./PasswordBox";
 
 const PasswordGenerateButton = ({
   password,
