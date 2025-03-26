@@ -1,7 +1,7 @@
 import PasswordBox from "./PasswordBox";
 
 const Main = () => (
-  <main class="flex flex-col items-center mt-8 p-4">
+  <main role="main" class="flex flex-col items-center mt-8 p-4">
     <h1 class="text-6xl mb-6 text-center">pkpw</h1>
     <h2 class="text-xl mb-6 text-center max-w-xl">
       What if{" "}
