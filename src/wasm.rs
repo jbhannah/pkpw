@@ -3,6 +3,9 @@ use wasm_bindgen::prelude::*;
 
 use crate::generate;
 
+/// Generate a Pokémon password with the optional minimum length or word count,
+/// and the given optional list of separators, or "digit" or "symbol" to use
+/// predefined lists of separators.
 #[wasm_bindgen]
 pub fn pkpw(len: Option<usize>, count: Option<usize>, separator: Option<String>) -> String {
     let mut rng = rng();
