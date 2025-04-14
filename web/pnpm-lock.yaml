@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@preact/signals':
         specifier: ^2.0.3
-        version: 2.0.3(preact@10.26.4)
+        version: 2.0.3(preact@10.26.5)
       pkpw:
         specifier: ^1.3.1
         version: 1.3.1
@@ -18,8 +18,8 @@ importers:
         specifier: ^1.235.6
         version: 1.235.6
       preact:
-        specifier: ^10.26.4
-        version: 10.26.4
+        specifier: ^10.26.5
+        version: 10.26.5
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.9.4
@@ -29,7 +29,7 @@ importers:
         version: 1.3.5
       '@rsbuild/plugin-preact':
         specifier: ^1.3.1
-        version: 1.3.1(@rsbuild/core@1.3.5)(preact@10.26.4)
+        version: 1.3.1(@rsbuild/core@1.3.5)(preact@10.26.5)
       '@tailwindcss/postcss':
         specifier: ^4.1.3
         version: 4.1.3
@@ -418,15 +418,12 @@ packages:
       rrweb-snapshot:
         optional: true
 
-  preact@10.26.4:
-    resolution: {integrity: sha512-KJhO7LBFTjP71d83trW+Ilnjbo+ySsaAgCfXOXUlmGzJ4ygYPWmysm77yg4emwfmoz3b22yvH5IsVFHbhUaH5w==}
+  preact@10.26.5:
+    resolution: {integrity: sha512-fmpDkgfGU6JYux9teDWLhj9mKN55tyepwYbxHgQuIxbWQzgFg5vk7Mrrtfx7xRxq798ynkY4DDDxZr235Kk+4w==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
-
-  tailwindcss@4.0.17:
-    resolution: {integrity: sha512-OErSiGzRa6rLiOvaipsDZvLMSpsBZ4ysB4f0VKGXUrjw2jfkJRd6kjRKV2+ZmTCNvwtvgdDam5D7w6WXsdLJZw==}
 
   tailwindcss@4.1.3:
     resolution: {integrity: sha512-2Q+rw9vy1WFXu5cIxlvsabCwhU2qUwodGq03ODhLJ0jW4ek5BUtoCsnLB0qG+m8AHgEsSJcJGDSDe06FXlP74g==}
@@ -512,14 +509,14 @@ snapshots:
 
   '@preact/signals-core@1.8.0': {}
 
-  '@preact/signals@2.0.3(preact@10.26.4)':
+  '@preact/signals@2.0.3(preact@10.26.5)':
     dependencies:
       '@preact/signals-core': 1.8.0
-      preact: 10.26.4
+      preact: 10.26.5
 
-  '@prefresh/core@1.5.3(preact@10.26.4)':
+  '@prefresh/core@1.5.3(preact@10.26.5)':
     dependencies:
-      preact: 10.26.4
+      preact: 10.26.5
 
   '@prefresh/utils@1.2.0': {}
 
@@ -533,12 +530,12 @@ snapshots:
     transitivePeerDependencies:
       - '@rspack/tracing'
 
-  '@rsbuild/plugin-preact@1.3.1(@rsbuild/core@1.3.5)(preact@10.26.4)':
+  '@rsbuild/plugin-preact@1.3.1(@rsbuild/core@1.3.5)(preact@10.26.5)':
     dependencies:
-      '@prefresh/core': 1.5.3(preact@10.26.4)
+      '@prefresh/core': 1.5.3(preact@10.26.5)
       '@prefresh/utils': 1.2.0
       '@rsbuild/core': 1.3.5
-      '@rspack/plugin-preact-refresh': 1.1.2(@prefresh/core@1.5.3(preact@10.26.4))(@prefresh/utils@1.2.0)
+      '@rspack/plugin-preact-refresh': 1.1.2(@prefresh/core@1.5.3(preact@10.26.5))(@prefresh/utils@1.2.0)
       '@swc/plugin-prefresh': 6.3.2
     transitivePeerDependencies:
       - preact
@@ -593,9 +590,9 @@ snapshots:
 
   '@rspack/lite-tapable@1.0.1': {}
 
-  '@rspack/plugin-preact-refresh@1.1.2(@prefresh/core@1.5.3(preact@10.26.4))(@prefresh/utils@1.2.0)':
+  '@rspack/plugin-preact-refresh@1.1.2(@prefresh/core@1.5.3(preact@10.26.5))(@prefresh/utils@1.2.0)':
     dependencies:
-      '@prefresh/core': 1.5.3(preact@10.26.4)
+      '@prefresh/core': 1.5.3(preact@10.26.5)
       '@prefresh/utils': 1.2.0
 
   '@swc/counter@0.1.3': {}
@@ -750,14 +747,12 @@ snapshots:
     dependencies:
       core-js: 3.41.0
       fflate: 0.4.8
-      preact: 10.26.4
+      preact: 10.26.5
       web-vitals: 4.2.4
 
-  preact@10.26.4: {}
+  preact@10.26.5: {}
 
   source-map-js@1.2.1: {}
-
-  tailwindcss@4.0.17: {}
 
   tailwindcss@4.1.3: {}
 
