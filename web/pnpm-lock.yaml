@@ -34,8 +34,8 @@ importers:
         specifier: ^4.1.3
         version: 4.1.3
       daisyui:
-        specifier: ^5.0.9
-        version: 5.0.9
+        specifier: ^5.0.25
+        version: 5.0.25
       tailwindcss:
         specifier: ^4.1.3
         version: 4.1.3
@@ -307,8 +307,8 @@ packages:
   core-js@3.41.0:
     resolution: {integrity: sha512-SJ4/EHwS36QMJd6h/Rg+GyR4A5xE0FSI3eZ+iBVpfqf1x0eTSg1smWLHrA+2jQThZSh97fmSgFSU8B61nxosxA==}
 
-  daisyui@5.0.9:
-    resolution: {integrity: sha512-RsaehHh45f+0shWgZZaOY09/8eOae2voRsqJCD71j9yrnYgcke0Nj5ys0ZxrW4SPcc4+q96kWyJu0Z8P1zZdoA==}
+  daisyui@5.0.25:
+    resolution: {integrity: sha512-ETVQGxhwR8CIzPvJKKIKbQcOni9o2Dh9ODvy2aqNePo11lKRXkT7ugWldjNbqSTTr/jtHnQKMPau0AraRXSRKw==}
 
   detect-libc@2.0.3:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
@@ -424,9 +424,6 @@ packages:
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
-
-  tailwindcss@4.0.17:
-    resolution: {integrity: sha512-OErSiGzRa6rLiOvaipsDZvLMSpsBZ4ysB4f0VKGXUrjw2jfkJRd6kjRKV2+ZmTCNvwtvgdDam5D7w6WXsdLJZw==}
 
   tailwindcss@4.1.3:
     resolution: {integrity: sha512-2Q+rw9vy1WFXu5cIxlvsabCwhU2qUwodGq03ODhLJ0jW4ek5BUtoCsnLB0qG+m8AHgEsSJcJGDSDe06FXlP74g==}
@@ -674,7 +671,7 @@ snapshots:
 
   core-js@3.41.0: {}
 
-  daisyui@5.0.9: {}
+  daisyui@5.0.25: {}
 
   detect-libc@2.0.3: {}
 
@@ -756,8 +753,6 @@ snapshots:
   preact@10.26.4: {}
 
   source-map-js@1.2.1: {}
-
-  tailwindcss@4.0.17: {}
 
   tailwindcss@4.1.3: {}
 
