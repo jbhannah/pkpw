@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@preact/signals':
-        specifier: ^2.0.3
-        version: 2.0.3(preact@10.26.6)
+        specifier: ^2.1.1
+        version: 2.1.1(preact@10.26.6)
       pkpw:
         specifier: ^1.3.1
         version: 1.3.1
@@ -123,10 +123,10 @@ packages:
   '@preact/signals-core@1.8.0':
     resolution: {integrity: sha512-OBvUsRZqNmjzCZXWLxkZfhcgT+Fk8DDcT/8vD6a1xhDemodyy87UJRJfASMuSD8FaAIeGgGm85ydXhm7lr4fyA==}
 
-  '@preact/signals@2.0.3':
-    resolution: {integrity: sha512-ZdC6w8+LdCMeALEoJgzwEAGw2YahqWGCQLfzRCRvRGC411SzcJOiti5gEqrSN+tKtGqMgicHtQ/eUUxWGTBw0A==}
+  '@preact/signals@2.1.1':
+    resolution: {integrity: sha512-qPgx6NVNQnfps424sxDZiW0rvsf/ByqSTT7LedzYa2kQLgT+LzayytghJmkScA6364/JJmne5UWHoxB4VUs79w==}
     peerDependencies:
-      preact: 10.x
+      preact: '>= 10.25.0'
 
   '@prefresh/core@1.5.3':
     resolution: {integrity: sha512-nDzxj0tA1/M6APNAWqaxkZ+3sTdPHESa+gol4+Bw7rMc2btWdkLoNH7j9rGhUb8SThC0Vz0VoXtq+U+9azGLHg==}
@@ -515,7 +515,7 @@ snapshots:
 
   '@preact/signals-core@1.8.0': {}
 
-  '@preact/signals@2.0.3(preact@10.26.6)':
+  '@preact/signals@2.1.1(preact@10.26.6)':
     dependencies:
       '@preact/signals-core': 1.8.0
       preact: 10.26.6
