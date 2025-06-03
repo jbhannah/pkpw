@@ -19,15 +19,22 @@ const Main = () => (
       <PasswordBox />
     </div>
     <p class="max-w-2xl text-center mb-4">
-      A password generator that uses Pokémon names to generate strong passwords.{" "}
+      A password generator that creates strong passwords from Pokémon names.
+      Uses the{" "}
       <a
         class="link link-accent"
         href="https://github.com/jbhannah/pkpw"
         target="_blank"
         rel="noreferrer noopener"
       >
-        Learn more
-      </a>
+        pkpw
+      </a>{" "}
+      Rust library compiled to WASM to generate passwords entirely in the
+      browser.
+    </p>
+    <p class="max-w-2xl text-center mb-4">
+      <strong>No passwords are sent over the network,</strong> only a counter of
+      the number of times the page is visited and each button is clicked.
     </p>
     <p class="max-w-2xl text-center mb-4">
       All Pokémon names are ™ and ©{" "}

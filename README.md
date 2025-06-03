@@ -1,4 +1,4 @@
-# [pkpw](https://pkpw.jbhannah.net)
+# [pkpw][]
 
 [![Crates.io](https://img.shields.io/crates/v/pkpw)](https://crates.io/crates/pkpw)
 [![npm](https://img.shields.io/npm/v/pkpw)](https://www.npmjs.com/package/pkpw)
@@ -64,6 +64,12 @@ import { pkpw } from "pkpw";
 const password = pkpw();
 ```
 
+The Javascript/Typescript package is compiled from Rust into WASM. If embedded
+in a [web page][pkpw], for example, all password generation runs in the browser;
+nothing is sent over the network. **Make sure you trust any online password
+generator that uses this package before using the passwords you generate from
+it!**
+
 ## But is it secure?
 
 **Disclaimer:** These are just estimates, I have a physics degree but I'm not
@@ -111,6 +117,7 @@ All Pokémon names are ™ and © The Pokémon Company, Inc. Everything else in
 this project is © Jesse Brooklyn Hannah and released under the terms of the
 [MIT License][].
 
+[pkpw]: https://pkpw.jbhannah.net
 [xkcd]: https://xkcd.com/936/
 [password entropy]: https://www.omnicalculator.com/other/password-entropy
 [names]: https://github.com/jbhannah/pkpw/blob/trunk/src/pokemon/pokemon.txt
