@@ -8,6 +8,10 @@ What if [`correct horse battery staple`][xkcd], but Pokémon.
 
 ## Installation
 
+```sh
+brew install jbhannah/pkpw/pkpw
+```
+
 ### CLI/Rust Library
 
 ```sh
