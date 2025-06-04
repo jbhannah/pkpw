@@ -49,7 +49,7 @@ jobs:
           base64_token=$(echo -n "${TOKEN}" | base64 | tr -d "\n")
           echo "::add-mask::${base64_token}"
           echo "token=${base64_token}" >> "${GITHUB_OUTPUT}"
-      - run: brew test-bot --only-formulae --tap jbhannah/pkpw --root-url https://ghcr.io/v2/jbhannah/pkpw --testing-formulae pkpw
+      - run: brew test-bot --only-formulae --root-url https://ghcr.io/v2/jbhannah/pkpw
         if: github.event_name == 'pull_request'
         env:
           HOMEBREW_DOCKER_REGISTRY_TOKEN: ${{ steps.base64-encode.outputs.token }}
