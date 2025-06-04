@@ -1,3 +1,4 @@
+.direnv/
 pkg/
 target/
 web/dist/
