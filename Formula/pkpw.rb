@@ -12,6 +12,6 @@ class Pkpw < Formula
   end
 
   test do
-    system `brew --prefix pkpw`.chomp + "/bin/pkpw", "--version"
+    system bin/"pkpw", "--version"
   end
 end
