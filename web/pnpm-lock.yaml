@@ -28,8 +28,8 @@ importers:
         specifier: ^1.3.22
         version: 1.3.22
       '@rsbuild/plugin-preact':
-        specifier: ^1.3.1
-        version: 1.3.1(@rsbuild/core@1.3.22)(preact@10.26.6)
+        specifier: ^1.4.0
+        version: 1.4.0(@rsbuild/core@1.3.22)(preact@10.26.6)
       '@tailwindcss/postcss':
         specifier: ^4.1.8
         version: 4.1.8
@@ -167,8 +167,8 @@ packages:
     engines: {node: '>=16.10.0'}
     hasBin: true
 
-  '@rsbuild/plugin-preact@1.3.1':
-    resolution: {integrity: sha512-gFkR00vxWpW2gZEk37kpeMERei9+g8nCrO76mblbqZ0/6e4LSTqKr6smljcHbCxKU8snFLecfURSvfsg7uQbsw==}
+  '@rsbuild/plugin-preact@1.4.0':
+    resolution: {integrity: sha512-P6EhWecSxFE7vLaM73gs3vOAsrvZnaPGGHhcsKApHhUaVg2Ucsurhs0BxlrK05ct6U/BJN2akGIqWOMRmiZ4Xw==}
     peerDependencies:
       '@rsbuild/core': 1.x
 
@@ -245,8 +245,8 @@ packages:
   '@swc/helpers@0.5.17':
     resolution: {integrity: sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A==}
 
-  '@swc/plugin-prefresh@6.3.2':
-    resolution: {integrity: sha512-evMH0i3diqfyqx7JYwj5R/116Vamp5/WrgRYGTtDQWR4advYMLbBqAN+ap3t+rnl9Ug0zEvBMXMdiH79b+GseQ==}
+  '@swc/plugin-prefresh@7.0.4':
+    resolution: {integrity: sha512-xIZWY6oRLgglNSTZiSi0H/Ir6ckbqfgGZndoI1ahjgjPaPVwgcyEdJRXKSnjGdYJg+w3I7Kfrx5FtEFPMKHwlw==}
 
   '@tailwindcss/node@4.1.8':
     resolution: {integrity: sha512-OWwBsbC9BFAJelmnNcrKuf+bka2ZxCE2A4Ft53Tkg4uoiE67r/PMEYwCsourC26E+kmxfwE0hVzMdxqeW+xu7Q==}
@@ -617,13 +617,13 @@ snapshots:
       core-js: 3.42.0
       jiti: 2.4.2
 
-  '@rsbuild/plugin-preact@1.3.1(@rsbuild/core@1.3.22)(preact@10.26.6)':
+  '@rsbuild/plugin-preact@1.4.0(@rsbuild/core@1.3.22)(preact@10.26.6)':
     dependencies:
       '@prefresh/core': 1.5.3(preact@10.26.6)
       '@prefresh/utils': 1.2.0
       '@rsbuild/core': 1.3.22
       '@rspack/plugin-preact-refresh': 1.1.2(@prefresh/core@1.5.3(preact@10.26.6))(@prefresh/utils@1.2.0)
-      '@swc/plugin-prefresh': 6.3.2
+      '@swc/plugin-prefresh': 7.0.4
     transitivePeerDependencies:
       - preact
 
@@ -688,7 +688,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@swc/plugin-prefresh@6.3.2':
+  '@swc/plugin-prefresh@7.0.4':
     dependencies:
       '@swc/counter': 0.1.3
 
