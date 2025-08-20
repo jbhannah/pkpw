@@ -44,21 +44,19 @@ pub fn generate<R: Rng + Clone + ?Sized>(
         sep => picked.join(sep),
     };
 
+    let mut numbers = String::new();
+
     if let Some(num_digits) = append_numbers {
         if num_digits > 0 {
             let mut rng_local = rng.clone();
-            let mut numbers = String::new();
             for _ in 0..num_digits {
                 let digit = DIGITS[rng_local.random::<u32>() as usize % DIGITS.len()];
                 numbers.push(digit);
             }
-            format!("{}{}", password, numbers)
-        } else {
-            password
         }
-    } else {
-        password
     }
+
+    format!("{}{}", password, numbers)
 }
 
 /// Join the collection of items with random selections from the set of possible
