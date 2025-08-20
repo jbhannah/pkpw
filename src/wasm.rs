@@ -14,7 +14,7 @@ pub fn pkpw(len: Option<usize>, count: Option<usize>, separator: Option<String>,
         len,
         count.unwrap_or(4),
         &(separator.unwrap_or(" ".to_string())),
-        append_numbers.unwrap_or(0),
+        append_numbers,
         &mut rng,
     )
 }

@@ -57,7 +57,7 @@ use pkpw::generate;
 use rand::rng;
 
 let mut rng = rng();
-let password = generate(None, 4, " ", 0, &mut rng);
+let password = generate(None, 4, " ", None, &mut rng);
 ```
 
 ### Javascript/Typescript

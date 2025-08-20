@@ -21,7 +21,7 @@ pub fn generate<R: Rng + Clone + ?Sized>(
     len: Option<usize>,
     count: usize,
     separator: &str,
-    append_numbers: usize,
+    append_numbers: Option<usize>,
     rng: &mut R,
 ) -> String {
     let mut rng_local = rng.clone();
@@ -44,14 +44,18 @@ pub fn generate<R: Rng + Clone + ?Sized>(
         sep => picked.join(sep),
     };
 
-    if append_numbers > 0 {
-        let mut rng_local = rng.clone();
-        let mut numbers = String::new();
-        for _ in 0..append_numbers {
-            let digit = rng_local.random::<u32>() % 10;
-            numbers.push_str(&digit.to_string());
+    if let Some(num_digits) = append_numbers {
+        if num_digits > 0 {
+            let mut rng_local = rng.clone();
+            let mut numbers = String::new();
+            for _ in 0..num_digits {
+                let digit = rng_local.random::<u32>() % 10;
+                numbers.push_str(&digit.to_string());
+            }
+            format!("{}{}", password, numbers)
+        } else {
+            password
         }
-        format!("{}{}", password, numbers)
     } else {
         password
     }
@@ -90,7 +94,7 @@ mod test {
 
         assert_eq!(
             "Makuhita Milotic Shiftry Charmander".to_string(),
-            generate(None, 4, " ", 0, &mut rng)
+            generate(None, 4, " ", None, &mut rng)
         );
     }
 
@@ -102,7 +106,7 @@ mod test {
 
         assert_eq!(
             "Makuhita Milotic Shiftry Charmander Swadloon".to_string(),
-            generate(Some(40), 4, " ", 0, &mut rng)
+            generate(Some(40), 4, " ", None, &mut rng)
         );
     }
 
@@ -114,7 +118,7 @@ mod test {
 
         assert_eq!(
             "Makuhita-Milotic-Shiftry-Charmander".to_string(),
-            generate(None, 4, "-", 0, &mut rng)
+            generate(None, 4, "-", None, &mut rng)
         );
     }
 
@@ -126,7 +130,7 @@ mod test {
 
         assert_eq!(
             "Makuhita0Milotic6Shiftry8Charmander".to_string(),
-            generate(None, 4, "digit", 0, &mut rng)
+            generate(None, 4, "digit", None, &mut rng)
         );
     }
 
@@ -138,7 +142,7 @@ mod test {
 
         assert_eq!(
             "Makuhita=Milotic;Shiftry]Charmander".to_string(),
-            generate(None, 4, "special", 0, &mut rng)
+            generate(None, 4, "special", None, &mut rng)
         );
     }
 
@@ -162,7 +166,7 @@ mod test {
 
         assert_eq!(
             "Makuhita Milotic Shiftry Charmander068".to_string(),
-            generate(None, 4, " ", 3, &mut rng)
+            generate(None, 4, " ", Some(3), &mut rng)
         );
     }
 
@@ -173,7 +177,7 @@ mod test {
 
         assert_eq!(
             "Makuhita Milotic Shiftry Charmander".to_string(),
-            generate(None, 4, " ", 0, &mut rng)
+            generate(None, 4, " ", Some(0), &mut rng)
         );
     }
 
@@ -184,7 +188,7 @@ mod test {
 
         assert_eq!(
             "Makuhita=Milotic;Shiftry]Charmander068".to_string(),
-            generate(None, 4, "special", 3, &mut rng)
+            generate(None, 4, "special", Some(3), &mut rng)
         );
     }
 }

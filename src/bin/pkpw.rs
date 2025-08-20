@@ -44,8 +44,7 @@ struct Args {
 fn main() {
     let args = Args::parse();
     let mut rng = rng();
-    let append_numbers = args.append_numbers.unwrap_or(0);
-    let password = generate(args.length, args.count, &args.separator, append_numbers, &mut rng);
+    let password = generate(args.length, args.count, &args.separator, args.append_numbers, &mut rng);
 
     if args.copy {
         Clipboard::new()
