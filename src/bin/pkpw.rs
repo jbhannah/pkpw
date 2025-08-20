@@ -33,13 +33,17 @@ struct Args {
     /// special characters.
     #[clap(short = 's', long = "separator", value_parser, default_value = " ")]
     separator: String,
+
+    /// Number of random digits to append to the end of the password.
+    #[clap(short = 'a', long = "append-numbers", value_parser, default_value_t = 0)]
+    append_numbers: usize,
 }
 
 /// Generate a password of four random Pokémon names joined by a separator.
 fn main() {
     let args = Args::parse();
     let mut rng = rng();
-    let password = generate(args.length, args.count, &args.separator, &mut rng);
+    let password = generate(args.length, args.count, &args.separator, args.append_numbers, &mut rng);
 
     if args.copy {
         Clipboard::new()
@@ -75,5 +79,22 @@ mod test {
         let mut cmd = cmd();
         cmd.arg("-l 40").arg("-n 4");
         cmd.assert().failure();
+    }
+
+    /// Ensure that the append-numbers option works.
+    #[test]
+    fn test_command_append_numbers() {
+        let mut cmd = cmd();
+        cmd.arg("--append-numbers").arg("3");
+        let output = cmd.assert().success();
+        let stdout = std::str::from_utf8(&output.get_output().stdout).unwrap();
+        
+        // Check that the last 3 characters are digits
+        let chars: Vec<char> = stdout.trim().chars().collect();
+        let last_three = &chars[chars.len() - 3..];
+        
+        for &ch in last_three {
+            assert!(ch.is_ascii_digit());
+        }
     }
 }
