@@ -49,8 +49,8 @@ pub fn generate<R: Rng + Clone + ?Sized>(
             let mut rng_local = rng.clone();
             let mut numbers = String::new();
             for _ in 0..num_digits {
-                let digit = rng_local.random::<u32>() % 10;
-                numbers.push_str(&digit.to_string());
+                let digit = DIGITS[rng_local.random::<u32>() as usize % DIGITS.len()];
+                numbers.push(digit);
             }
             format!("{}{}", password, numbers)
         } else {
