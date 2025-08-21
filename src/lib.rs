@@ -50,7 +50,7 @@ pub fn generate<R: Rng + Clone + ?Sized>(
         if num_digits > 0 {
             let mut rng_local = rng.clone();
             for _ in 0..num_digits {
-                let digit = DIGITS[rng_local.random::<u32>() as usize % DIGITS.len()];
+                let digit = DIGITS[rng_local.gen_range(0..DIGITS.len())];
                 numbers.push(digit);
             }
         }
