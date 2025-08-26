@@ -24,7 +24,7 @@ panic = "abort"
 strip = true
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
-arboard = "3.5.0"
+arboard = "3.6.1"
 clap = { version = "4.5.45", features = ["derive"] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
