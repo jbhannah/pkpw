@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
-  packages = with pkgs; [ git ];
+  packages = with pkgs; [
+    git
+    lld
+    wasm-pack
+  ];
 
   languages.rust.enable = true;
   languages.javascript = {
