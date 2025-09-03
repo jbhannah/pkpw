@@ -17,9 +17,9 @@ export const generatePassword = (
   );
 };
 
-export const copyPassword = (password: Signal<string>) => {
+export const copyPassword = (password: string) => {
   posthog.capture("copied_password");
-  navigator.clipboard.writeText(password.value);
+  navigator.clipboard.writeText(password);
 };
 
 export const toggleOptions = (optionsVisible: Signal<boolean>) => {
