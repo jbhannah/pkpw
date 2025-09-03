@@ -24,6 +24,7 @@ export enum PasswordSeparator {
   SPACE = " ",
   DIGITS = "digit",
   SPECIAL = "special",
+  RANDOM = "random",
 }
 
 const PasswordBox = () => {

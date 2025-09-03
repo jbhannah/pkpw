@@ -34,6 +34,7 @@ const PasswordOptions = ({
             {separatorValue === PasswordSeparator.DIGITS && "Digits"}
             {separatorValue === PasswordSeparator.SPECIAL &&
               "Special Characters"}
+            {separatorValue === PasswordSeparator.RANDOM && "Random"}
           </option>
         ))}
       </select>

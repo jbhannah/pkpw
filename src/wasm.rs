@@ -63,6 +63,17 @@ mod test {
     }
 
     #[wasm_bindgen_test]
+    fn accepts_random_split() {
+        let password = pkpw(None, None, Some("random".to_string()));
+        let mut separators = DIGITS.to_vec();
+        separators.extend_from_slice(SPECIAL);
+        separators.push(' ');
+        let words = password.split(&separators[..]).count();
+
+        assert!(words >= 3);
+    }
+
+    #[wasm_bindgen_test]
     fn accepts_chararcter_split() {
         let password = pkpw(None, None, Some("%".to_string()));
         let char_count = password.chars().filter(|c| c == &'%').count();
