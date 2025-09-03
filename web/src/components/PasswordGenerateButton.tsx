@@ -10,7 +10,9 @@ const PasswordGenerateButton = ({
 }: Readonly<PasswordSignalProps & PasswordOptionProps>) => (
   <Button
     classes="btn-primary"
-    onClick={() => generatePassword(password, len, count, separator)}
+    onClick={() =>
+      generatePassword(password, len.value, count.value, separator.value)
+    }
   >
     Generate
   </Button>

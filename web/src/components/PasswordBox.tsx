@@ -4,15 +4,21 @@ import { generatePassword } from "../util";
 import PasswordCopyButton from "./PasswordCopyButton";
 import PasswordField from "./PasswordField";
 import PasswordGenerateButton from "./PasswordGenerateButton";
+import PasswordOptions from "./PasswordOptions";
+import PasswordOptionsButton from "./PasswordOptionsButton";
 
 export interface PasswordSignalProps {
   password: Signal<string>;
 }
 
+export interface PasswordOptionsVisibleProps {
+  optionsVisible: Signal<boolean>;
+}
+
 export interface PasswordOptionProps {
-  len: number;
-  count: number;
-  separator: string;
+  len: Signal<number>;
+  count: Signal<number>;
+  separator: Signal<PasswordSeparator>;
 }
 
 export enum PasswordSeparator {
@@ -26,6 +32,7 @@ const PasswordBox = () => {
   const len = useSignal(0);
   const count = useSignal(4);
   const separator = useSignal(PasswordSeparator.SPACE);
+  const optionsVisible = useSignal(false);
 
   useEffect(
     () => generatePassword(password, len.value, count.value, separator.value),
@@ -40,12 +47,16 @@ const PasswordBox = () => {
         <PasswordGenerateButton
           {...{
             password,
-            len: len.value,
-            count: count.value,
-            separator: separator.value,
+            len: len,
+            count: count,
+            separator: separator,
           }}
         />
+        <PasswordOptionsButton optionsVisible={optionsVisible} />
       </div>
+      {optionsVisible.value && (
+        <PasswordOptions {...{ len, count, separator }} />
+      )}
     </div>
   );
 };
