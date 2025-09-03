@@ -21,9 +21,9 @@ export interface PasswordOptionProps {
 }
 
 export enum PasswordSeparator {
+  SPACE = " ",
   DIGITS = "digit",
   SPECIAL = "special",
-  SPACE = " ",
 }
 
 const PasswordBox = () => {
