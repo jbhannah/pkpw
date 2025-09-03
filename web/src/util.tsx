@@ -21,3 +21,8 @@ export const copyPassword = (password: Signal<string>) => {
   posthog.capture("copied_password");
   navigator.clipboard.writeText(password.value);
 };
+
+export const toggleOptions = (optionsVisible: Signal<boolean>) => {
+  posthog.capture(optionsVisible.value ? "showed_options" : "hid_options");
+  optionsVisible.value = !optionsVisible.value;
+};
