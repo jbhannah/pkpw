@@ -9,7 +9,7 @@ export const generatePassword = (
   count: number,
   separator: PasswordSeparator,
 ) => {
-  posthog.capture("generated_password");
+  posthog.capture("generated_password", { len, count, separator });
   password.value = pkpw(
     len <= 0 ? null : len,
     count <= 0 ? null : count,
