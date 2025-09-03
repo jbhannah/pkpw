@@ -1,9 +1,8 @@
-import { type Signal, useSignal } from "@preact/signals";
-import { useEffect } from "preact/hooks";
+import { type Signal, useSignal, useSignalEffect } from "@preact/signals";
 import { generatePassword } from "../util";
+import Button from "./Button";
 import PasswordCopyButton from "./PasswordCopyButton";
 import PasswordField from "./PasswordField";
-import PasswordGenerateButton from "./PasswordGenerateButton";
 import PasswordOptions from "./PasswordOptions";
 import PasswordOptionsButton from "./PasswordOptionsButton";
 
@@ -34,24 +33,19 @@ const PasswordBox = () => {
   const separator = useSignal(PasswordSeparator.SPACE);
   const optionsVisible = useSignal(false);
 
-  useEffect(
-    () => generatePassword(password, len.value, count.value, separator.value),
-    [password, len, count, separator],
-  );
+  const generatePasswordOnce = () =>
+    generatePassword(password, len.value, count.value, separator.value);
+
+  useSignalEffect(generatePasswordOnce);
 
   return (
     <div class="w-full flex flex-col items-center gap-y-4">
       <PasswordField password={password} />
       <div class="flex gap-x-4">
         <PasswordCopyButton password={password} />
-        <PasswordGenerateButton
-          {...{
-            password,
-            len: len,
-            count: count,
-            separator: separator,
-          }}
-        />
+        <Button classes="btn-primary" onClick={generatePasswordOnce}>
+          Regenerate
+        </Button>
         <PasswordOptionsButton optionsVisible={optionsVisible} />
       </div>
       {optionsVisible.value && (
