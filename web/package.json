@@ -18,7 +18,7 @@
     "@biomejs/biome": "^2.2.2",
     "@rsbuild/core": "^1.5.3",
     "@rsbuild/plugin-preact": "^1.5.2",
-    "@tailwindcss/postcss": "^4.1.12",
+    "@tailwindcss/postcss": "^4.1.13",
     "daisyui": "^5.1.6",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2"
