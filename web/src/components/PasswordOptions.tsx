@@ -11,7 +11,7 @@ const PasswordOptions = ({
         className="input input-bordered"
         type="number"
         value={count}
-        min="0"
+        min="1"
         onInput={(event) => (count.value = parseInt(event.currentTarget.value))}
       />
     </label>
