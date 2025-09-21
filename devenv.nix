@@ -6,7 +6,18 @@
     wasm-pack
   ];
 
-  languages.rust.enable = true;
+  languages.rust = {
+    enable = true;
+    channel = "stable";
+    components = [
+      "rustc"
+      "cargo"
+      "clippy"
+      "rustfmt"
+      "rust-analyzer"
+    ];
+  };
+
   languages.javascript = {
     enable = true;
     directory = "./web";
