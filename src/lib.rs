@@ -17,7 +17,7 @@ const SPECIAL: &[char] = &[
 
 /// Generate a password matching the given parameters of character length, word
 /// count, and word separator.
-pub fn generate<R: Rng + Clone + ?Sized>(
+pub fn generate<R: Rng + Clone>(
     len: Option<usize>,
     count: usize,
     separator: &str,
