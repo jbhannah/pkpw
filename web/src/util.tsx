@@ -1,7 +1,7 @@
 import type { Signal } from "@preact/signals";
 import { pkpw } from "pkpw";
 import posthog from "posthog-js";
-import { PasswordSeparator } from "./components/PasswordBox";
+import type { PasswordSeparator } from "./components/PasswordBox";
 
 export const generatePassword = (
   password: Signal<string>,

@@ -1,4 +1,4 @@
-import { PasswordSeparator, type PasswordOptionProps } from "./PasswordBox";
+import { type PasswordOptionProps, PasswordSeparator } from "./PasswordBox";
 
 const PasswordOptions = ({
   count,
@@ -12,7 +12,9 @@ const PasswordOptions = ({
         type="number"
         value={count}
         min="1"
-        onInput={(event) => (count.value = parseInt(event.currentTarget.value))}
+        onInput={(event) => {
+          count.value = parseInt(event.currentTarget.value, 10);
+        }}
       />
     </label>
     <label className="label">
@@ -20,9 +22,9 @@ const PasswordOptions = ({
       <select
         name="separator"
         className="select select-bordered w-full max-w-xs"
-        onChange={(event) =>
-          (separator.value = event.currentTarget.value as PasswordSeparator)
-        }
+        onChange={(event) => {
+          separator.value = event.currentTarget.value as PasswordSeparator;
+        }}
       >
         {Object.values(PasswordSeparator).map((separatorValue) => (
           <option

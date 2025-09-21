@@ -1,6 +1,6 @@
 import { toggleOptions } from "../util";
 import Button from "./Button";
-import { PasswordOptionsVisibleProps } from "./PasswordBox";
+import type { PasswordOptionsVisibleProps } from "./PasswordBox";
 
 const PasswordOptionsButton = ({
   optionsVisible,
