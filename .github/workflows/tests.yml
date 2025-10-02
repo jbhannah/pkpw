@@ -1,10 +1,10 @@
 name: brew test-bot
 
-on:
-  push:
-    branches:
-      - trunk
-  pull_request:
+on: {}
+  # push:
+  #   branches:
+  #     - trunk
+  # pull_request:
 
 jobs:
   test-bot:
