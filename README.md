@@ -70,9 +70,10 @@ const password = pkpw();
 
 The Javascript/Typescript package is compiled from Rust into WASM. If embedded
 in a [web page][pkpw], for example, all password generation runs in the browser;
-nothing is sent over the network. **Make sure you trust any online password
-generator that uses this package before using the passwords you generate from
-it!**
+only analytics of page visit count, password generation count, and the options
+(minimum length, Pokémon name count, and separator character set) are sent over
+the network. **Make sure you trust any online password generator that uses this
+package before using the passwords you generate from it!**
 
 ## But is it secure?
 

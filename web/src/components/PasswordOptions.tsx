@@ -1,0 +1,47 @@
+import { type PasswordOptionProps, PasswordSeparator } from "./PasswordBox";
+
+const PasswordOptions = ({
+  count,
+  separator,
+}: Readonly<PasswordOptionProps>) => (
+  <>
+    <label className="label">
+      <span className="label-text">Count</span>
+      <input
+        className="input input-bordered"
+        type="number"
+        value={count}
+        min="1"
+        onInput={(event) => {
+          count.value = parseInt(event.currentTarget.value, 10);
+        }}
+      />
+    </label>
+    <label className="label">
+      <span className="label-text">Separator</span>
+      <select
+        name="separator"
+        className="select select-bordered w-full max-w-xs"
+        onChange={(event) => {
+          separator.value = event.currentTarget.value as PasswordSeparator;
+        }}
+      >
+        {Object.values(PasswordSeparator).map((separatorValue) => (
+          <option
+            key={separatorValue}
+            value={separatorValue}
+            selected={separator.value === separatorValue}
+          >
+            {separatorValue === PasswordSeparator.SPACE && "Space"}
+            {separatorValue === PasswordSeparator.DIGITS && "Digits"}
+            {separatorValue === PasswordSeparator.SPECIAL &&
+              "Special Characters"}
+            {separatorValue === PasswordSeparator.RANDOM && "Random"}
+          </option>
+        ))}
+      </select>
+    </label>
+  </>
+);
+
+export default PasswordOptions;

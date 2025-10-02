@@ -17,7 +17,7 @@ const SPECIAL: &[char] = &[
 
 /// Generate a password matching the given parameters of character length, word
 /// count, word separator, and optional appended random digits.
-pub fn generate<R: Rng + Clone + ?Sized>(
+pub fn generate<R: Rng + Clone>(
     len: Option<usize>,
     count: usize,
     separator: &str,
@@ -28,7 +28,7 @@ pub fn generate<R: Rng + Clone + ?Sized>(
     let mut pokemon = Pokemon::new(&mut rng_local);
 
     let separator_length = match separator {
-        "digit" | "special" => 1,
+        "digit" | "special" | "random" => 1,
         sep => sep.len(),
     };
 
@@ -41,6 +41,12 @@ pub fn generate<R: Rng + Clone + ?Sized>(
     let password = match separator {
         "digit" => join(picked, DIGITS, &mut rng_local),
         "special" => join(picked, SPECIAL, &mut rng_local),
+        "random" => {
+            let mut separators = DIGITS.to_vec();
+            separators.extend_from_slice(SPECIAL);
+            separators.push(' ');
+            join(picked, &separators, &mut rng_local)
+        }
         sep => picked.join(sep),
     };
 
@@ -141,6 +147,18 @@ mod test {
         assert_eq!(
             "Makuhita=Milotic;Shiftry]Charmander".to_string(),
             generate(None, 4, "special", None, &mut rng)
+        );
+    }
+
+    /// Ensure that generate(…, "random", …) generates a password with random
+    /// separators.
+    #[test]
+    fn test_generate_random() {
+        let mut rng = rng_from_seed(POKEMON_COUNT);
+
+        assert_eq!(
+            "Makuhita|Milotic{Shiftry8Charmander".to_string(),
+            generate(None, 4, "random", &mut rng)
         );
     }
 

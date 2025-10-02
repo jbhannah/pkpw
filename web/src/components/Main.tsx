@@ -34,7 +34,9 @@ const Main = () => (
     </p>
     <p class="max-w-2xl text-center mb-4">
       <strong>No passwords are sent over the network,</strong> only a counter of
-      the number of times the page is visited and each button is clicked.
+      the number of times the page is visited and each button is clicked, and
+      the options (minimum character count, Pokémon name count, and separator
+      character set) passed to the generator.
     </p>
     <p class="max-w-2xl text-center mb-4">
       All Pokémon names are ™ and ©{" "}

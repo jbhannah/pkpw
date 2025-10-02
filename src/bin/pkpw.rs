@@ -29,8 +29,8 @@ struct Args {
     length: Option<usize>,
 
     /// Separator between Pokémon names in the generated password; either a
-    /// single character, "digit" for random digits, or "special" for random
-    /// special characters.
+    /// single character, "digit" for random digits, "special" for random special
+    /// characters, or "random" for a random separator from all options.
     #[clap(short = 's', long = "separator", value_parser, default_value = " ")]
     separator: String,
 
