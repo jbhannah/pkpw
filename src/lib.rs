@@ -56,8 +56,8 @@ pub fn generate<R: Rng + Clone>(
         if num_digits > 0 {
             let mut rng_local = rng.clone();
             for _ in 0..num_digits {
-                let digit = DIGITS[rng_local.gen_range(0..DIGITS.len())];
-                numbers.push(digit);
+                let i = rng_local.random::<u32>() as usize % DIGITS.len();
+                numbers.push(DIGITS[i]);
             }
         }
     }
@@ -158,7 +158,7 @@ mod test {
 
         assert_eq!(
             "Makuhita|Milotic{Shiftry8Charmander".to_string(),
-            generate(None, 4, "random", &mut rng)
+            generate(None, 4, "random", None, &mut rng)
         );
     }
 
