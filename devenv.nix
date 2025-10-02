@@ -16,6 +16,7 @@
       "rustfmt"
       "rust-analyzer"
     ];
+    targets = [ "wasm32-unknown-unknown" ];
   };
 
   languages.javascript = {
