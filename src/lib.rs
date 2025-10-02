@@ -53,12 +53,10 @@ pub fn generate<R: Rng + Clone>(
     let mut numbers = String::new();
 
     if let Some(num_digits) = append_numbers {
-        if num_digits > 0 {
-            let mut rng_local = rng.clone();
-            for _ in 0..num_digits {
-                let i = rng_local.random::<u32>() as usize % DIGITS.len();
-                numbers.push(DIGITS[i]);
-            }
+        let mut rng_local = rng.clone();
+        for _ in 0..num_digits {
+            let i = rng_local.random::<u32>() as usize % DIGITS.len();
+            numbers.push(DIGITS[i]);
         }
     }
 
