@@ -16,11 +16,12 @@ const SPECIAL: &[char] = &[
 ];
 
 /// Generate a password matching the given parameters of character length, word
-/// count, and word separator.
+/// count, word separator, and optional appended random digits.
 pub fn generate<R: Rng + Clone>(
     len: Option<usize>,
     count: usize,
     separator: &str,
+    append_numbers: Option<usize>,
     rng: &mut R,
 ) -> String {
     let mut rng_local = rng.clone();
@@ -37,7 +38,7 @@ pub fn generate<R: Rng + Clone>(
     };
 
     let mut rng_local = rng.clone();
-    match separator {
+    let password = match separator {
         "digit" => join(picked, DIGITS, &mut rng_local),
         "special" => join(picked, SPECIAL, &mut rng_local),
         "random" => {
@@ -47,7 +48,19 @@ pub fn generate<R: Rng + Clone>(
             join(picked, &separators, &mut rng_local)
         }
         sep => picked.join(sep),
+    };
+
+    let mut numbers = String::new();
+
+    if let Some(num_digits) = append_numbers {
+        let mut rng_local = rng.clone();
+        for _ in 0..num_digits {
+            let i = rng_local.random::<u32>() as usize % DIGITS.len();
+            numbers.push(DIGITS[i]);
+        }
     }
+
+    format!("{}{}", password, numbers)
 }
 
 /// Join the collection of items with random selections from the set of possible
@@ -83,7 +96,7 @@ mod test {
 
         assert_eq!(
             "Makuhita Milotic Shiftry Charmander".to_string(),
-            generate(None, 4, " ", &mut rng)
+            generate(None, 4, " ", None, &mut rng)
         );
     }
 
@@ -95,7 +108,7 @@ mod test {
 
         assert_eq!(
             "Makuhita Milotic Shiftry Charmander Swadloon".to_string(),
-            generate(Some(40), 4, " ", &mut rng)
+            generate(Some(40), 4, " ", None, &mut rng)
         );
     }
 
@@ -107,7 +120,7 @@ mod test {
 
         assert_eq!(
             "Makuhita-Milotic-Shiftry-Charmander".to_string(),
-            generate(None, 4, "-", &mut rng)
+            generate(None, 4, "-", None, &mut rng)
         );
     }
 
@@ -119,7 +132,7 @@ mod test {
 
         assert_eq!(
             "Makuhita0Milotic6Shiftry8Charmander".to_string(),
-            generate(None, 4, "digit", &mut rng)
+            generate(None, 4, "digit", None, &mut rng)
         );
     }
 
@@ -131,7 +144,7 @@ mod test {
 
         assert_eq!(
             "Makuhita=Milotic;Shiftry]Charmander".to_string(),
-            generate(None, 4, "special", &mut rng)
+            generate(None, 4, "special", None, &mut rng)
         );
     }
 
@@ -143,7 +156,7 @@ mod test {
 
         assert_eq!(
             "Makuhita|Milotic{Shiftry8Charmander".to_string(),
-            generate(None, 4, "random", &mut rng)
+            generate(None, 4, "random", None, &mut rng)
         );
     }
 
@@ -157,6 +170,39 @@ mod test {
         assert_eq!(
             "Lilligant0Tranquill6Shelmet8Mesprit",
             join(picked, DIGITS, &mut rng)
+        );
+    }
+
+    /// Ensure that generate(…, …, …, 3, …) appends 3 random digits to the password.
+    #[test]
+    fn test_generate_append_numbers() {
+        let mut rng = rng_from_seed(POKEMON_COUNT);
+
+        assert_eq!(
+            "Makuhita Milotic Shiftry Charmander068".to_string(),
+            generate(None, 4, " ", Some(3), &mut rng)
+        );
+    }
+
+    /// Ensure that generate with append_numbers=0 behaves the same as before.
+    #[test]
+    fn test_generate_append_numbers_zero() {
+        let mut rng = rng_from_seed(POKEMON_COUNT);
+
+        assert_eq!(
+            "Makuhita Milotic Shiftry Charmander".to_string(),
+            generate(None, 4, " ", Some(0), &mut rng)
+        );
+    }
+
+    /// Ensure that append_numbers works with special separators.
+    #[test]
+    fn test_generate_append_numbers_with_special() {
+        let mut rng = rng_from_seed(POKEMON_COUNT);
+
+        assert_eq!(
+            "Makuhita=Milotic;Shiftry]Charmander068".to_string(),
+            generate(None, 4, "special", Some(3), &mut rng)
         );
     }
 }
