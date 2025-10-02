@@ -14,7 +14,7 @@ pub fn pkpw(len: Option<usize>, count: Option<usize>, separator: Option<String>,
         len,
         count.unwrap_or(4),
         &(separator.unwrap_or(" ".to_string())),
-        append_numbers.unwrap_or(0),
+        append_numbers,
         &mut rng,
     )
 }
@@ -65,7 +65,7 @@ mod test {
 
     #[wasm_bindgen_test]
     fn accepts_random_split() {
-        let password = pkpw(None, None, Some("random".to_string()));
+        let password = pkpw(None, None, Some("random".to_string()), None);
         let mut separators = DIGITS.to_vec();
         separators.extend_from_slice(SPECIAL);
         separators.push(' ');
