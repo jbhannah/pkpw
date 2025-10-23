@@ -34,8 +34,8 @@ importers:
         specifier: ^4.1.14
         version: 4.1.14
       daisyui:
-        specifier: ^5.1.26
-        version: 5.1.26
+        specifier: ^5.3.8
+        version: 5.3.8
       tailwindcss:
         specifier: ^4.1.14
         version: 4.1.14
@@ -359,8 +359,8 @@ packages:
   core-js@3.45.1:
     resolution: {integrity: sha512-L4NPsJlCfZsPeXukyzHFlg/i7IIVwHSItR0wg0FLNqYClJ4MQYTYLbC7EkjKYRLZF2iof2MUgN0EGy7MdQFChg==}
 
-  daisyui@5.1.26:
-    resolution: {integrity: sha512-keoOGnZ7aLHWlUBUfyCj7tIGkXXTFAO4U6BFBMBSSyGYHY6aP+onIuBQNTwRD09g3yg5aNLxvIY3pNS8bwPUgQ==}
+  daisyui@5.3.8:
+    resolution: {integrity: sha512-ihDXb07IzM/2ugkwBWdy2LFCaepdn1oGsKIsR3gNG/VuTAmS60+HUG9rskjR5BzyJOVVUDDpWoiX3PBDIT3DYQ==}
 
   detect-libc@2.1.1:
     resolution: {integrity: sha512-ecqj/sy1jcK1uWrwpR67UhYrIFQ+5WlGxth34WquCbamhFA6hkkwiu37o6J5xCHdo1oixJRfVRw+ywV+Hq/0Aw==}
@@ -812,7 +812,7 @@ snapshots:
 
   core-js@3.45.1: {}
 
-  daisyui@5.1.26: {}
+  daisyui@5.3.8: {}
 
   detect-libc@2.1.1: {}
 
