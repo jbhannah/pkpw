@@ -39,7 +39,7 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - run: cargo build --verbose --release
       - run: cargo test --verbose --release
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: pkpw-${{ (github.ref_type == 'tag' && github.ref_name) || github.sha }}-${{ runner.os }}-${{ runner.arch }}
           path: target/release/pkpw${{ (runner.os == 'Windows' && '.exe') || '' }}
