@@ -28,7 +28,7 @@ arboard = "3.6.1"
 clap = { version = "4.5.47", features = ["derive"] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
-assert_cmd = "2.0.17"
+assert_cmd = "2.1.1"
 
 [target.wasm32-unknown-unknown.dependencies]
 getrandom = { version = "0.3.3", features = ["wasm_js"] }
