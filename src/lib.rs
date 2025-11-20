@@ -42,7 +42,7 @@ pub fn generate<R: Rng + Clone>(
         "digit" => join(picked, DIGITS, &mut rng_local),
         "special" => join(picked, SPECIAL, &mut rng_local),
         "random" => {
-            let separators: Vec<char> = (&[])
+            let separators: Vec<char> = []
                 .iter()
                 .chain(DIGITS.iter())
                 .chain(DIGITS.iter())
