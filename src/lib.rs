@@ -42,9 +42,14 @@ pub fn generate<R: Rng + Clone>(
         "digit" => join(picked, DIGITS, &mut rng_local),
         "special" => join(picked, SPECIAL, &mut rng_local),
         "random" => {
-            let mut separators = DIGITS.to_vec();
-            separators.extend_from_slice(SPECIAL);
-            separators.push(' ');
+            let separators: Vec<char> = (&[])
+                .iter()
+                .chain(DIGITS.iter())
+                .chain(DIGITS.iter())
+                .chain(DIGITS.iter())
+                .chain(SPECIAL.iter())
+                .copied()
+                .collect();
             join(picked, &separators, &mut rng_local)
         }
         sep => picked.join(sep),
@@ -155,7 +160,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita|Milotic{Shiftry8Charmander".to_string(),
+            "Makuhita3Milotic]Shiftry!Charmander".to_string(),
             generate(None, 4, "random", None, &mut rng)
         );
     }
