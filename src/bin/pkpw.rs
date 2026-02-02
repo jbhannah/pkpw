@@ -69,10 +69,14 @@ fn main() {
 #[cfg(test)]
 mod test {
     fn cmd() -> assert_cmd::Command {
-        assert_cmd::Command::new(
-            std::env::var("CARGO_BIN_EXE_pkpw")
-                .unwrap_or_else(|_| format!("target/debug/{}", env!("CARGO_PKG_NAME"))),
-        )
+        assert_cmd::Command::new(std::env::var("CARGO_BIN_EXE_pkpw").unwrap_or_else(|_| {
+            let profile = if cfg!(debug_assertions) {
+                "debug"
+            } else {
+                "release"
+            };
+            format!("target/{}/{}", profile, env!("CARGO_PKG_NAME"))
+        }))
     }
 
     /// Ensure that the command runs successfully.
