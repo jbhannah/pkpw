@@ -1,5 +1,5 @@
 [package]
-name = "libpkpw"
+name = "pkpw"
 version = "1.4.0-dev0"
 authors = ["Jesse Brooklyn Hannah <jesse@jbhannah.net>"]
 edition = "2021"

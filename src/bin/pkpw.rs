@@ -4,7 +4,7 @@ use std::io::{stdout, IsTerminal};
 
 use arboard::Clipboard;
 use clap::Parser;
-use libpkpw::generate;
+use pkpw::generate;
 use rand::rng;
 
 #[derive(Parser, Debug)]

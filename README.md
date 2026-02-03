@@ -53,7 +53,7 @@ OPTIONS:
 ### Rust
 
 ```rust
-use libpkpw::generate;
+use pkpw::generate;
 use rand::rng;
 
 let mut rng = rng();
