@@ -75,7 +75,7 @@ mod test {
             } else {
                 "release"
             };
-            format!("target/{}/{}", profile, env!("CARGO_PKG_NAME"))
+            format!("target/{}/pkpw", profile)
         }))
     }
 
