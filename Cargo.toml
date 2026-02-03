@@ -31,7 +31,7 @@ clap = { version = "4.5.47", features = ["derive"] }
 assert_cmd = "2.0.17"
 
 [target.wasm32-unknown-unknown.dependencies]
-getrandom = { version = "0.4.0", features = ["wasm_js"] }
+getrandom = { version = "0.4.1", features = ["wasm_js"] }
 wasm-bindgen = "0.2"
 
 [target.wasm32-unknown-unknown.dev-dependencies]
