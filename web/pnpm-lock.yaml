@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@preact/signals':
-        specifier: ^2.6.2
-        version: 2.6.2(preact@10.28.3)
+        specifier: ^2.7.0
+        version: 2.7.0(preact@10.28.3)
       pkpw:
         specifier: ^1.3.1
         version: 1.3.1
@@ -226,11 +226,11 @@ packages:
   '@posthog/types@1.336.4':
     resolution: {integrity: sha512-BY3cq/8segbXEvHbEXx9SWmaKJEM0AGgsOgMFH2yy13AV+rUHsGcp4Z5LDI5pU25DURN9EAZvzcoVyYy/Iokmw==}
 
-  '@preact/signals-core@1.12.2':
-    resolution: {integrity: sha512-5Yf8h1Ke3SMHr15xl630KtwPTW4sYDFkkxS0vQ8UiQLWwZQnrF9IKaVG1mN5VcJz52EcWs2acsc/Npjha/7ysA==}
+  '@preact/signals-core@1.13.0':
+    resolution: {integrity: sha512-slT6XeTCAbdql61GVLlGU4x7XHI7kCZV5Um5uhE4zLX4ApgiiXc0UYFvVOKq06xcovzp7p+61l68oPi563ARKg==}
 
-  '@preact/signals@2.6.2':
-    resolution: {integrity: sha512-80PMfNS3d8t/J3cRNEJP14zRioWnavgqzX/+tsNGiCX6rpD26+eLkUQpa1sIeOERZMink+dAi34y0MJhg11LKQ==}
+  '@preact/signals@2.7.0':
+    resolution: {integrity: sha512-9rQ030JhUfdBO4xlFB6Iwc/rOBi9IFXaCgu8VrFMSjAJfubGRTTxBPsgSlAF5qmWdY3C91b9kBK09mpUOMh1Rw==}
     peerDependencies:
       preact: '>= 10.25.0 || >=11.0.0-0'
 
@@ -829,11 +829,11 @@ snapshots:
 
   '@posthog/types@1.336.4': {}
 
-  '@preact/signals-core@1.12.2': {}
+  '@preact/signals-core@1.13.0': {}
 
-  '@preact/signals@2.6.2(preact@10.28.3)':
+  '@preact/signals@2.7.0(preact@10.28.3)':
     dependencies:
-      '@preact/signals-core': 1.12.2
+      '@preact/signals-core': 1.13.0
       preact: 10.28.3
 
   '@prefresh/core@1.5.9(preact@10.28.3)':
