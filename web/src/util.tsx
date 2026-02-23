@@ -1,7 +1,15 @@
 import type { Signal } from "@preact/signals";
 import { pkpw } from "pkpw";
 import posthog from "posthog-js";
-import type { PasswordSeparator } from "./components/PasswordBox";
+import { PasswordSeparator } from "./components/PasswordBox";
+
+const DIGITS = "0123456789";
+const SPECIAL = "~`!@#$%^&*()_-+={}[]|:;<,>.?/";
+
+const randomSeparatorChar = (): string => {
+  const pool = DIGITS.repeat(3) + SPECIAL;
+  return pool[Math.floor(Math.random() * pool.length)];
+};
 
 export const generatePassword = (
   password: Signal<string>,
@@ -10,10 +18,12 @@ export const generatePassword = (
   separator: PasswordSeparator,
 ) => {
   posthog.capture("generated_password", { len, count, separator });
+  const effectiveSeparator =
+    separator === PasswordSeparator.RANDOM ? randomSeparatorChar() : separator;
   password.value = pkpw(
     len <= 0 ? null : len,
     count <= 0 ? null : count,
-    separator,
+    effectiveSeparator,
   );
 };
 
