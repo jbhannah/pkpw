@@ -7,7 +7,7 @@ pub mod wasm;
 
 use crate::pokemon::Pokemon;
 pub use crate::pokemon::POKEMON;
-use rand::Rng;
+use rand::{Rng, RngExt};
 
 const DIGITS: &[char] = &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const SPECIAL: &[char] = &[
@@ -17,15 +17,14 @@ const SPECIAL: &[char] = &[
 
 /// Generate a password matching the given parameters of character length, word
 /// count, word separator, and optional appended random digits.
-pub fn generate<R: Rng + Clone>(
+pub fn generate<R: Rng>(
     len: Option<usize>,
     count: usize,
     separator: &str,
     append_numbers: Option<usize>,
     rng: &mut R,
 ) -> String {
-    let mut rng_local = rng.clone();
-    let mut pokemon = Pokemon::new(&mut rng_local);
+    let mut pokemon = Pokemon::new(rng);
 
     let separator_length = match separator {
         "digit" | "special" | "random" => 1,
@@ -37,10 +36,9 @@ pub fn generate<R: Rng + Clone>(
         None => pokemon.pick(count),
     };
 
-    let mut rng_local = rng.clone();
     let password = match separator {
-        "digit" => join(picked, DIGITS, &mut rng_local),
-        "special" => join(picked, SPECIAL, &mut rng_local),
+        "digit" => join(picked, DIGITS, rng),
+        "special" => join(picked, SPECIAL, rng),
         "random" => {
             let separators: Vec<char> = []
                 .iter()
@@ -50,7 +48,7 @@ pub fn generate<R: Rng + Clone>(
                 .chain(SPECIAL.iter())
                 .copied()
                 .collect();
-            join(picked, &separators, &mut rng_local)
+            join(picked, &separators, rng)
         }
         sep => picked.join(sep),
     };
@@ -58,9 +56,8 @@ pub fn generate<R: Rng + Clone>(
     let mut numbers = String::new();
 
     if let Some(num_digits) = append_numbers {
-        let mut rng_local = rng.clone();
         for _ in 0..num_digits {
-            let i = rng_local.random::<u32>() as usize % DIGITS.len();
+            let i = rng.random::<u32>() as usize % DIGITS.len();
             numbers.push(DIGITS[i]);
         }
     }
@@ -136,7 +133,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Wugtrio4Vanilluxe5Piplup6Golett".to_string(),
+            "Wugtrio1Vanilluxe3Piplup6Golett".to_string(),
             generate(None, 4, "digit", None, &mut rng)
         );
     }
@@ -148,7 +145,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Wugtrio`Vanilluxe#Piplup+Golett".to_string(),
+            "Wugtrio.Vanilluxe%Piplup/Golett".to_string(),
             generate(None, 4, "special", None, &mut rng)
         );
     }
@@ -160,7 +157,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Wugtrio2Vanilluxe.Piplup4Golett".to_string(),
+            "Wugtrio8Vanilluxe8Piplup`Golett".to_string(),
             generate(None, 4, "random", None, &mut rng)
         );
     }
@@ -184,7 +181,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Wugtrio Vanilluxe Piplup Golett456".to_string(),
+            "Wugtrio Vanilluxe Piplup Golett136".to_string(),
             generate(None, 4, " ", Some(3), &mut rng)
         );
     }
@@ -206,7 +203,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Wugtrio`Vanilluxe#Piplup+Golett456".to_string(),
+            "Wugtrio.Vanilluxe%Piplup/Golett311".to_string(),
             generate(None, 4, "special", Some(3), &mut rng)
         );
     }
