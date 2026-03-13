@@ -100,7 +100,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita Milotic Shiftry Charmander".to_string(),
+            "Wugtrio Vanilluxe Piplup Golett".to_string(),
             generate(None, 4, " ", None, &mut rng)
         );
     }
@@ -112,7 +112,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita Milotic Shiftry Charmander Swadloon".to_string(),
+            "Wugtrio Vanilluxe Piplup Golett Lapras Mr. Rime".to_string(),
             generate(Some(40), 4, " ", None, &mut rng)
         );
     }
@@ -124,7 +124,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita-Milotic-Shiftry-Charmander".to_string(),
+            "Wugtrio-Vanilluxe-Piplup-Golett".to_string(),
             generate(None, 4, "-", None, &mut rng)
         );
     }
@@ -136,7 +136,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita0Milotic6Shiftry8Charmander".to_string(),
+            "Wugtrio4Vanilluxe5Piplup6Golett".to_string(),
             generate(None, 4, "digit", None, &mut rng)
         );
     }
@@ -148,7 +148,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita=Milotic;Shiftry]Charmander".to_string(),
+            "Wugtrio`Vanilluxe#Piplup+Golett".to_string(),
             generate(None, 4, "special", None, &mut rng)
         );
     }
@@ -160,7 +160,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita3Milotic]Shiftry!Charmander".to_string(),
+            "Wugtrio2Vanilluxe.Piplup4Golett".to_string(),
             generate(None, 4, "random", None, &mut rng)
         );
     }
@@ -173,7 +173,7 @@ mod test {
         let picked = vec!["Lilligant", "Tranquill", "Shelmet", "Mesprit"];
 
         assert_eq!(
-            "Lilligant0Tranquill6Shelmet8Mesprit",
+            "Lilligant4Tranquill5Shelmet6Mesprit",
             join(picked, DIGITS, &mut rng)
         );
     }
@@ -184,7 +184,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita Milotic Shiftry Charmander068".to_string(),
+            "Wugtrio Vanilluxe Piplup Golett456".to_string(),
             generate(None, 4, " ", Some(3), &mut rng)
         );
     }
@@ -195,7 +195,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita Milotic Shiftry Charmander".to_string(),
+            "Wugtrio Vanilluxe Piplup Golett".to_string(),
             generate(None, 4, " ", Some(0), &mut rng)
         );
     }
@@ -206,7 +206,7 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Makuhita=Milotic;Shiftry]Charmander068".to_string(),
+            "Wugtrio`Vanilluxe#Piplup+Golett456".to_string(),
             generate(None, 4, "special", Some(3), &mut rng)
         );
     }

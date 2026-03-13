@@ -3,7 +3,7 @@ use std::array::IntoIter;
 use lazy_static::lazy_static;
 use rand::{prelude::SliceRandom, Rng};
 
-pub const POKEMON_COUNT: usize = 1025;
+pub const POKEMON_COUNT: usize = 1028;
 
 lazy_static! {
     /// Array of all Pokémon names, in English and ASCII-normalized (e.g.
@@ -108,7 +108,14 @@ mod test {
         let picked = pokemon.length(40, 1);
 
         assert_eq!(
-            vec!["Makuhita", "Milotic", "Shiftry", "Charmander", "Swadloon"],
+            vec![
+                "Wugtrio",
+                "Vanilluxe",
+                "Piplup",
+                "Golett",
+                "Lapras",
+                "Mr. Rime"
+            ],
             picked
         );
         assert!(picked.join(" ").len() > 40);
@@ -120,7 +127,7 @@ mod test {
         let mut pokemon = from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            vec!["Makuhita", "Milotic", "Shiftry", "Charmander"],
+            vec!["Wugtrio", "Vanilluxe", "Piplup", "Golett"],
             pokemon.pick(4)
         );
     }
@@ -131,8 +138,8 @@ mod test {
     fn test_pick_pick() {
         let mut pokemon = from_seed(POKEMON_COUNT);
 
-        assert_eq!(vec!["Makuhita", "Milotic", "Shiftry"], pokemon.pick(3));
-        assert_eq!(vec!["Charmander", "Swadloon"], pokemon.pick(2));
+        assert_eq!(vec!["Wugtrio", "Vanilluxe", "Piplup"], pokemon.pick(3));
+        assert_eq!(vec!["Golett", "Lapras"], pokemon.pick(2));
     }
 
     /// Ensure that all Pokémon names are loaded.
