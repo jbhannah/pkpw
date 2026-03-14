@@ -12,8 +12,8 @@ importers:
         specifier: ^2.8.2
         version: 2.8.2(preact@10.29.0)
       pkpw:
-        specifier: ^1.3.1
-        version: 1.3.1
+        specifier: ^1.4.0
+        version: 1.4.0
       posthog-js:
         specifier: ^1.360.2
         version: 1.360.2
@@ -586,8 +586,8 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  pkpw@1.3.1:
-    resolution: {integrity: sha512-5SiCcgyqgzdBTSTZ8vIRd/QXFdAv3rb7vjsRqEyTJhKpYCNuF2Bz/JJjuZqNGmDqgelBwfDtUNlaoUEWUjEyiA==}
+  pkpw@1.4.0:
+    resolution: {integrity: sha512-l7/Di99vxwEevpXUBIZmdPn+u9QSMYfJMXplNJlbY52xUkxPo0zSifnBpmkU11JZpYLLx6QStosArqeF/Caa6A==}
 
   postcss@8.5.8:
     resolution: {integrity: sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==}
@@ -1130,7 +1130,7 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  pkpw@1.3.1: {}
+  pkpw@1.4.0: {}
 
   postcss@8.5.8:
     dependencies:
