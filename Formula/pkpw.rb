@@ -1,8 +1,8 @@
 class Pkpw < Formula
   desc "What if correct horse battery staple, but Pokémon"
   homepage "https://pkpw.jbhannah.net"
-  url "https://github.com/jbhannah/pkpw/archive/refs/tags/v1.3.2.tar.gz"
-  sha256 "15d58b892bb5e7cef96871b9f8d6619662183f6fa0b35f38a6eea270f3b4d0a6"
+  url "https://github.com/jbhannah/pkpw/archive/refs/tags/v1.4.0.tar.gz"
+  sha256 "d6db7646e8e6d393552681090c2447b77f3c04805843ae5c4c7e2cf2c764d776"
   license "MIT"
 
   depends_on "rust" => :build
@@ -12,6 +12,6 @@ class Pkpw < Formula
   end
 
   test do
-    system bin/"pkpw", "--version"
+    system bin / "pkpw", "--version"
   end
 end
