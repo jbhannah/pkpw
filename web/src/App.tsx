@@ -9,11 +9,10 @@ const options = {
   api_host: "https://us.i.posthog.com",
 };
 
-const REACT_APP_PUBLIC_POSTHOG_KEY =
-  "phc_6rKhMfbzpccKI3EcDXbng8EuP7h2FC2rQga9nRBV8G";
+const POSTHOG_KEY = import.meta.env.PUBLIC_POSTHOG_KEY;
 
 const App = () => (
-  <PostHogProvider apiKey={REACT_APP_PUBLIC_POSTHOG_KEY} options={options}>
+  <PostHogProvider apiKey={POSTHOG_KEY} options={options}>
     <div class="min-h-screen w-full flex flex-col">
       <Header />
       <div class="flex-1">
