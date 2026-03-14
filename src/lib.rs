@@ -40,7 +40,7 @@ pub fn generate<R: Rng>(
         "digit" => join(picked, DIGITS, rng),
         "special" => join(picked, SPECIAL, rng),
         "random" => {
-            let sep_count = picked.len() - 1;
+            let sep_count = picked.len().saturating_sub(1);
             let combined: Vec<char> = DIGITS.iter().chain(SPECIAL.iter()).copied().collect();
             if sep_count >= 2 {
                 let mut seps: Vec<char> = Vec::with_capacity(sep_count);
