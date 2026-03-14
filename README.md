@@ -30,7 +30,7 @@ npm add pkpw
 
 ```console
 $ pkpw -h
-pkpw 1.3.2
+pkpw 1.4.0
 Jesse Brooklyn Hannah <jesse@jbhannah.net>
 What if correct horse battery staple, but Pokémon.
 
