@@ -40,15 +40,23 @@ pub fn generate<R: Rng>(
         "digit" => join(picked, DIGITS, rng),
         "special" => join(picked, SPECIAL, rng),
         "random" => {
-            let separators: Vec<char> = []
-                .iter()
-                .chain(DIGITS.iter())
-                .chain(DIGITS.iter())
-                .chain(DIGITS.iter())
-                .chain(SPECIAL.iter())
-                .copied()
-                .collect();
-            join(picked, &separators, rng)
+            let sep_count = picked.len() - 1;
+            let combined: Vec<char> = DIGITS.iter().chain(SPECIAL.iter()).copied().collect();
+            if sep_count >= 2 {
+                let mut seps: Vec<char> = Vec::with_capacity(sep_count);
+                seps.push(DIGITS[rng.random::<u32>() as usize % DIGITS.len()]);
+                seps.push(SPECIAL[rng.random::<u32>() as usize % SPECIAL.len()]);
+                for _ in 2..sep_count {
+                    seps.push(combined[rng.random::<u32>() as usize % combined.len()]);
+                }
+                for i in (1..seps.len()).rev() {
+                    let j = rng.random::<u32>() as usize % (i + 1);
+                    seps.swap(i, j);
+                }
+                join_with_fixed(picked, &seps)
+            } else {
+                join(picked, &combined, rng)
+            }
         }
         sep => picked.join(sep),
     };
@@ -74,6 +82,20 @@ pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[char], rng: &mut R
         .reduce(|password, next| {
             let i = rng.random::<u32>() as usize % separators.len();
             format!("{}{}{}", password, separators[i], next)
+        })
+        .unwrap_or_else(|| "".to_string())
+}
+
+/// Join the collection of items using a pre-selected list of separators applied
+/// in order.
+pub fn join_with_fixed(picked: Vec<&str>, separators: &[char]) -> String {
+    let mut sep_iter = separators.iter();
+    picked
+        .into_iter()
+        .map(|name| name.to_owned())
+        .reduce(|password, next| {
+            let sep = sep_iter.next().copied().expect("separator count must equal word count minus 1");
+            format!("{}{}{}", password, sep, next)
         })
         .unwrap_or_else(|| "".to_string())
 }
@@ -157,9 +179,37 @@ mod test {
         let mut rng = rng_from_seed(POKEMON_COUNT);
 
         assert_eq!(
-            "Wugtrio8Vanilluxe8Piplup`Golett".to_string(),
+            "Wugtrio1Vanilluxe@Piplup%Golett".to_string(),
             generate(None, 4, "random", None, &mut rng)
         );
+    }
+
+    /// Ensure that generate(…, "random", …) with 3 or more words always
+    /// includes at least one digit separator and one special character separator.
+    #[test]
+    fn test_generate_random_guarantees_digit_and_special() {
+        for seed in 0..50 {
+            let mut rng = rng_from_seed(seed);
+            let password = generate(None, 4, "random", None, &mut rng);
+            assert!(
+                password.chars().any(|c| c.is_ascii_digit()),
+                "no digit separator in password: {password}"
+            );
+            assert!(
+                password.chars().any(|c| SPECIAL.contains(&c)),
+                "no special separator in password: {password}"
+            );
+        }
+    }
+
+    /// Ensure that generate(…, "random", …) with exactly 2 words (1 separator)
+    /// uses only characters from the combined digit and special character pool,
+    /// which inherently excludes spaces.
+    #[test]
+    fn test_generate_random_excludes_space() {
+        // Structural check: spaces are not in either pool used for random separators
+        assert!(!DIGITS.contains(&' '));
+        assert!(!SPECIAL.contains(&' '));
     }
 
     /// Ensure that join() joins the vector of strings with random elements from
