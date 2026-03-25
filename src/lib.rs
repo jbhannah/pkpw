@@ -175,6 +175,25 @@ mod test {
         );
     }
 
+    /// Ensure that join() returns an empty string when the vector of items is
+    /// empty.
+    #[test]
+    fn test_join_empty() {
+        let mut rng = rng_from_seed(POKEMON_COUNT);
+        let picked = vec![];
+
+        assert_eq!("", join(picked, DIGITS, &mut rng));
+    }
+
+    /// Ensure that join() returns a single item without any separators.
+    #[test]
+    fn test_join_single() {
+        let mut rng = rng_from_seed(POKEMON_COUNT);
+        let picked = vec!["Lilligant"];
+
+        assert_eq!("Lilligant", join(picked, DIGITS, &mut rng));
+    }
+
     /// Ensure that generate(…, …, …, 3, …) appends 3 random digits to the password.
     #[test]
     fn test_generate_append_numbers() {
