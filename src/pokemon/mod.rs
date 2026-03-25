@@ -43,7 +43,11 @@ impl<'a> Pokemon<'a> {
         let sep = vec![" "; separator_length].join("");
 
         while picked.join(&sep).len() < length {
-            picked.push(self.iter.next().expect("no unique names left"));
+            if let Some(name) = self.iter.next() {
+                picked.push(name);
+            } else {
+                break;
+            }
         }
 
         picked
@@ -146,5 +150,16 @@ mod test {
     #[test]
     fn test_pokemon() {
         assert_eq!(POKEMON.len(), POKEMON_COUNT);
+    }
+
+    /// Ensure that asking for a length longer than the combined length of all
+    /// Pokémon names does not panic.
+    #[test]
+    fn test_length_exceeds_total() {
+        let mut pokemon = from_seed(POKEMON_COUNT);
+        // An arbitrarily large length
+        let picked = pokemon.length(100_000_000, 1);
+
+        assert_eq!(picked.len(), POKEMON_COUNT);
     }
 }

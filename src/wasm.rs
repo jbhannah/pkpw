@@ -3,6 +3,10 @@ use wasm_bindgen::prelude::*;
 
 use crate::generate;
 
+const MAX_LEN: usize = 1024;
+const MAX_COUNT: usize = 1024;
+const MAX_APPEND_NUMBERS: usize = 256;
+
 /// Generate a Pokémon password with the optional minimum length or word count,
 /// the given optional list of separators, or "digit" or "symbol" to use
 /// predefined lists of separators, and optional number of digits to append.
@@ -10,11 +14,15 @@ use crate::generate;
 pub fn pkpw(len: Option<usize>, count: Option<usize>, separator: Option<String>, append_numbers: Option<usize>) -> String {
     let mut rng = rng();
 
+    let safe_len = len.map(|l| l.min(MAX_LEN));
+    let safe_count = count.unwrap_or(4).min(MAX_COUNT);
+    let safe_append_numbers = append_numbers.map(|n| n.min(MAX_APPEND_NUMBERS));
+
     generate(
-        len,
-        count.unwrap_or(4),
+        safe_len,
+        safe_count,
         &(separator.unwrap_or(" ".to_string())),
-        append_numbers,
+        safe_append_numbers,
         &mut rng,
     )
 }
