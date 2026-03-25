@@ -36,7 +36,7 @@ pub fn generate<R: Rng>(
         None => pokemon.pick(count),
     };
 
-    let password = match separator {
+    let mut password = match separator {
         "digit" => join(picked, DIGITS, rng),
         "special" => join(picked, SPECIAL, rng),
         "random" => {
@@ -53,16 +53,14 @@ pub fn generate<R: Rng>(
         sep => picked.join(sep),
     };
 
-    let mut numbers = String::new();
-
     if let Some(num_digits) = append_numbers {
         for _ in 0..num_digits {
             let i = rng.random::<u32>() as usize % DIGITS.len();
-            numbers.push(DIGITS[i]);
+            password.push(DIGITS[i]);
         }
     }
 
-    format!("{}{}", password, numbers)
+    password
 }
 
 /// Join the collection of items with random selections from the set of possible
