@@ -68,14 +68,21 @@ pub fn generate<R: Rng>(
 /// Join the collection of items with random selections from the set of possible
 /// separators.
 pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[char], rng: &mut R) -> String {
-    picked
-        .into_iter()
-        .map(|name| name.to_owned())
-        .reduce(|password, next| {
-            let i = rng.random::<u32>() as usize % separators.len();
-            format!("{}{}{}", password, separators[i], next)
-        })
-        .unwrap_or_else(|| "".to_string())
+    let mut iter = picked.into_iter();
+    let first = match iter.next() {
+        Some(first) => first,
+        None => return String::new(),
+    };
+
+    let mut result = first.to_owned();
+
+    for next in iter {
+        let i = rng.random::<u32>() as usize % separators.len();
+        result.push(separators[i]);
+        result.push_str(next);
+    }
+
+    result
 }
 
 #[cfg(test)]
