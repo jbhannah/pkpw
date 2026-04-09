@@ -11,7 +11,7 @@
   "dependencies": {
     "@preact/signals": "^2.8.2",
     "pkpw": "^1.4.0",
-    "posthog-js": "^1.363.3",
+    "posthog-js": "^1.366.1",
     "preact": "^10.29.0"
   },
   "devDependencies": {
