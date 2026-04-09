@@ -21,7 +21,7 @@
     "@tailwindcss/postcss": "^4.2.2",
     "daisyui": "^5.5.19",
     "tailwindcss": "^4.2.2",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
