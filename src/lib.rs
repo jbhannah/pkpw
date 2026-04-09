@@ -54,6 +54,7 @@ pub fn generate<R: Rng>(
     };
 
     if let Some(num_digits) = append_numbers {
+        password.reserve(num_digits);
         for _ in 0..num_digits {
             let i = rng.random::<u32>() as usize % DIGITS.len();
             password.push(DIGITS[i]);
