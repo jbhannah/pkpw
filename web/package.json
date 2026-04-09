@@ -9,7 +9,7 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
-    "@preact/signals": "^2.8.2",
+    "@preact/signals": "^2.9.0",
     "pkpw": "^1.4.0",
     "posthog-js": "^1.363.3",
     "preact": "^10.29.0"
