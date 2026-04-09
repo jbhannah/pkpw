@@ -15,6 +15,13 @@ const SPECIAL: &[char] = &[
     ']', '|', ':', ';', '<', ',', '>', '.', '?', '/',
 ];
 
+const RANDOM_SEPARATORS: &[char] = &[
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '1', '2', '3', '4', '5', '6', '7', '8',
+    '9', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '~', '`', '!', '@', '#', '$', '%', '^',
+    '&', '*', '(', ')', '_', '-', '+', '=', '{', '}', '[', ']', '|', ':', ';', '<', ',', '>', '.',
+    '?', '/',
+];
+
 /// Generate a password matching the given parameters of character length, word
 /// count, word separator, and optional appended random digits.
 pub fn generate<R: Rng>(
@@ -39,17 +46,7 @@ pub fn generate<R: Rng>(
     let password = match separator {
         "digit" => join(picked, DIGITS, rng),
         "special" => join(picked, SPECIAL, rng),
-        "random" => {
-            let separators: Vec<char> = []
-                .iter()
-                .chain(DIGITS.iter())
-                .chain(DIGITS.iter())
-                .chain(DIGITS.iter())
-                .chain(SPECIAL.iter())
-                .copied()
-                .collect();
-            join(picked, &separators, rng)
-        }
+        "random" => join(picked, RANDOM_SEPARATORS, rng),
         sep => picked.join(sep),
     };
 
