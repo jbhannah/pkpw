@@ -12,7 +12,7 @@
     "@preact/signals": "^2.8.2",
     "pkpw": "^1.4.0",
     "posthog-js": "^1.363.3",
-    "preact": "^10.29.0"
+    "preact": "^10.29.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.8",

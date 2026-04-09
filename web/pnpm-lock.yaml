@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@preact/signals':
         specifier: ^2.8.2
-        version: 2.8.2(preact@10.29.0)
+        version: 2.8.2(preact@10.29.1)
       pkpw:
         specifier: ^1.4.0
         version: 1.4.0
@@ -18,8 +18,8 @@ importers:
         specifier: ^1.363.3
         version: 1.363.3
       preact:
-        specifier: ^10.29.0
-        version: 10.29.0
+        specifier: ^10.29.1
+        version: 10.29.1
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.4.8
@@ -29,7 +29,7 @@ importers:
         version: 1.7.3
       '@rsbuild/plugin-preact':
         specifier: ^1.7.2
-        version: 1.7.2(@rsbuild/core@1.7.3)(preact@10.29.0)
+        version: 1.7.2(@rsbuild/core@1.7.3)(preact@10.29.1)
       '@tailwindcss/postcss':
         specifier: ^4.2.2
         version: 4.2.2
@@ -596,8 +596,8 @@ packages:
   posthog-js@1.363.3:
     resolution: {integrity: sha512-j1+MTbHO17kKXJMGDnaiW1EMOiA4AprE8EML6QnbSds+XbqHR2CdHa8T+/zIriZSoXlkZH4R+A4gY29lb5hdlA==}
 
-  preact@10.29.0:
-    resolution: {integrity: sha512-wSAGyk2bYR1c7t3SZ3jHcM6xy0lcBcDel6lODcs9ME6Th++Dx2KU+6D3HD8wMMKGA8Wpw7OMd3/4RGzYRpzwRg==}
+  preact@10.29.1:
+    resolution: {integrity: sha512-gQCLc/vWroE8lIpleXtdJhTFDogTdZG9AjMUpVkDf2iTCNwYNWA+u16dL41TqUDJO4gm2IgrcMv3uTpjd4Pwmg==}
 
   protobufjs@7.5.4:
     resolution: {integrity: sha512-CvexbZtbov6jW2eXAvLukXjXUW1TzFaivC46BpWc/3BpcCysb5Vffu+B3XHMm8lVEuy2Mm4XGex8hBSg1yapPg==}
@@ -834,14 +834,14 @@ snapshots:
 
   '@preact/signals-core@1.14.0': {}
 
-  '@preact/signals@2.8.2(preact@10.29.0)':
+  '@preact/signals@2.8.2(preact@10.29.1)':
     dependencies:
       '@preact/signals-core': 1.14.0
-      preact: 10.29.0
+      preact: 10.29.1
 
-  '@prefresh/core@1.5.9(preact@10.29.0)':
+  '@prefresh/core@1.5.9(preact@10.29.1)':
     dependencies:
-      preact: 10.29.0
+      preact: 10.29.1
 
   '@prefresh/utils@1.2.1': {}
 
@@ -876,11 +876,11 @@ snapshots:
       core-js: 3.47.0
       jiti: 2.6.1
 
-  '@rsbuild/plugin-preact@1.7.2(@rsbuild/core@1.7.3)(preact@10.29.0)':
+  '@rsbuild/plugin-preact@1.7.2(@rsbuild/core@1.7.3)(preact@10.29.1)':
     dependencies:
-      '@prefresh/core': 1.5.9(preact@10.29.0)
+      '@prefresh/core': 1.5.9(preact@10.29.1)
       '@prefresh/utils': 1.2.1
-      '@rspack/plugin-preact-refresh': 1.1.5(@prefresh/core@1.5.9(preact@10.29.0))(@prefresh/utils@1.2.1)
+      '@rspack/plugin-preact-refresh': 1.1.5(@prefresh/core@1.5.9(preact@10.29.1))(@prefresh/utils@1.2.1)
       '@swc/plugin-prefresh': 12.7.0
     optionalDependencies:
       '@rsbuild/core': 1.7.3
@@ -942,9 +942,9 @@ snapshots:
 
   '@rspack/lite-tapable@1.1.0': {}
 
-  '@rspack/plugin-preact-refresh@1.1.5(@prefresh/core@1.5.9(preact@10.29.0))(@prefresh/utils@1.2.1)':
+  '@rspack/plugin-preact-refresh@1.1.5(@prefresh/core@1.5.9(preact@10.29.1))(@prefresh/utils@1.2.1)':
     dependencies:
-      '@prefresh/core': 1.5.9(preact@10.29.0)
+      '@prefresh/core': 1.5.9(preact@10.29.1)
       '@prefresh/utils': 1.2.1
 
   '@swc/counter@0.1.3': {}
@@ -1150,11 +1150,11 @@ snapshots:
       core-js: 3.49.0
       dompurify: 3.3.3
       fflate: 0.4.8
-      preact: 10.29.0
+      preact: 10.29.1
       query-selector-shadow-dom: 1.0.1
       web-vitals: 5.1.0
 
-  preact@10.29.0: {}
+  preact@10.29.1: {}
 
   protobufjs@7.5.4:
     dependencies:
