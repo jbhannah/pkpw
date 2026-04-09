@@ -75,7 +75,7 @@ pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[char], rng: &mut R
             let i = rng.random::<u32>() as usize % separators.len();
             format!("{}{}{}", password, separators[i], next)
         })
-        .unwrap_or_else(|| "".to_string())
+        .unwrap_or_default()
 }
 
 #[cfg(test)]
