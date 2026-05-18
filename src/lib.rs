@@ -68,8 +68,8 @@ pub fn generate<R: Rng>(
 /// Join the collection of items with random selections from the set of possible
 /// separators.
 pub fn join<R: Rng + ?Sized>(picked: Vec<&str>, separators: &[char], rng: &mut R) -> String {
-    if picked.is_empty() {
-        return String::new();
+    if picked.is_empty() || separators.is_empty() {
+        return picked.concat();
     }
 
     let total_len: usize = picked.iter().map(|s| s.len()).sum::<usize>()
