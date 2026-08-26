@@ -9,18 +9,18 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
-    "@preact/signals": "^2.9.0",
+    "@preact/signals": "^2.11.1",
     "pkpw": "^1.4.0",
-    "posthog-js": "^1.363.3",
-    "preact": "^10.29.0"
+    "posthog-js": "^1.419.4",
+    "preact": "^10.29.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.8",
-    "@rsbuild/core": "^1.7.3",
-    "@rsbuild/plugin-preact": "^1.7.2",
-    "@tailwindcss/postcss": "^4.2.2",
-    "daisyui": "^5.5.19",
-    "tailwindcss": "^4.2.2",
-    "typescript": "^6.0.2"
+    "@biomejs/biome": "^2.5.10",
+    "@rsbuild/core": "^1.7.6",
+    "@rsbuild/plugin-preact": "^1.7.3",
+    "@tailwindcss/postcss": "^4.3.3",
+    "daisyui": "^5.7.22",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
   }
 }
